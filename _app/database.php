@@ -93,14 +93,11 @@
 		
 		function selectAllFromTable($table, $id) {
 			try {
-				// Generic select statement to get small bits of information from the database
+				// Generic select statement to get all information from a table in the database
 				$results = array();
 				$result = $this->connection->query("SELECT * FROM ".$table." WHERE ID=".$id) or die("An error has occured! ".mysqli_error());
 			    
-			    while ($row = $result->fetch_assoc()) {
-					$results[] = $row[$column];
-				}
-			    
+			    $results = $result->fetch_assoc();
 			    $result->close();
 			    
 			   	return $results;

@@ -46,6 +46,12 @@
 			}
 		}
 		
+		function getPost() {
+			// Get all information about this post
+			$table = $this->database->postsTable;
+			return $this->database->selectAllFromTable($table, $this->getId());
+		}
+		
 		function getId() {
 			return $this->id;
 		}
@@ -62,9 +68,10 @@
 			$this->author = $author;
 		}
 		
-		function getDateUpdated($id) {
+		function getDateUpdated() {
+			// Get last updated date from database
 			$table = $this->database->postsTable;
-			$date = $this->database->selectFromTable($table, 'date_updated', $id);
+			$date = $this->database->selectFromTable($table, 'date_updated', $this->getId());
 		
 			return $date[0];
 		}

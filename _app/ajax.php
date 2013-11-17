@@ -22,7 +22,7 @@
 		$post->save($title, $markdown, $html, $published);	
 		$newId = $post->getId();
 		
-		$return = array('id' => $newId, 'date' => $post->getDateUpdated($newId));
+		$return = array('id' => $newId, 'date' => $post->getDateUpdated());
 		
 		echo json_encode($return);
 	}
