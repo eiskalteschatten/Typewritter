@@ -26,5 +26,15 @@
 			</div>
 			<?php include("_includes/settings-menu.php") ?>
 		</div>
+		<div class="content">
+			<?php
+				$allPosts = new Posts();
+				$posts = $allPosts->getAllPosts(15);
+				
+				foreach ($posts as $post) {
+					echo $post['title'] . "<br>";
+				}
+			?>
+		</div>
 	</body>
 </html>

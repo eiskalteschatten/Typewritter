@@ -91,9 +91,9 @@
 			}
 		}
 		
-		function selectAllFromTable($table, $id) {
+		function selectAllFromRow($table, $id) {
 			try {
-				// Generic select statement to get all information from a table in the database
+				// Generic select statement to get all information from a row in a table in the database
 				$results = array();
 				$result = $this->connection->query("SELECT * FROM ".$table." WHERE ID=".$id) or die("An error has occured! ".mysqli_error());
 			    
@@ -107,7 +107,7 @@
 			}
 		}
 		
-		function selectFromTable($table, $column, $id) {
+		function selectFromRow($table, $column, $id) {
 			try {
 				// Generic select statement to get small bits of information from the database
 				$results = array();
@@ -117,6 +117,33 @@
 					$results[] = $row[$column];
 				}
 			    
+			    $result->close();
+			    
+			   	return $results;
+			}
+			catch(Exception $e) {
+				die($e);
+			}
+		}
+
+		function selectAllFromTable($table, $limit=null) {
+			try {
+				// Generic select statement to get all information from a table in the database
+				
+				if ($limit) {  			// With limit
+					$query = "SELECT * FROM ".$table." limit ".$limit;
+				}
+				else {			// Without limit
+					$query = "SELECT * FROM ".$table;
+				}
+				
+				$results = array();
+				$result = $this->connection->query($query) or die("An error has occured! ".mysqli_error());
+			    
+			    while ($row = $result->fetch_assoc()) {
+					$results[] = $row;
+				}
+				
 			    $result->close();
 			    
 			   	return $results;

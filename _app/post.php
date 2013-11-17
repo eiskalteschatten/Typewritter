@@ -1,14 +1,15 @@
 <?php
 	require_once("database.php");
+	require_once("posts.php");
 	require_once("author.php");
 
-	// Class for posts
+	// Class for a single post
 
-	class Post {
+	class Post Extends Posts {
 		private $database = null;
 		private $id;
 		private $author;
-	
+
 		function __construct($id) {
 			try { 
 				$this->setId($id);
@@ -49,7 +50,7 @@
 		function getPost() {
 			// Get all information about this post
 			$table = $this->database->postsTable;
-			return $this->database->selectAllFromTable($table, $this->getId());
+			return $this->database->selectAllFromRow($table, $this->getId());
 		}
 		
 		function getId() {
@@ -71,7 +72,7 @@
 		function getDateUpdated() {
 			// Get last updated date from database
 			$table = $this->database->postsTable;
-			$date = $this->database->selectFromTable($table, 'date_updated', $this->getId());
+			$date = $this->database->selectFromRow($table, 'date_updated', $this->getId());
 		
 			return $date[0];
 		}
