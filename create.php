@@ -37,8 +37,10 @@
 				<input type="text" id="postTitle" placeholder="Post title">
 			</div>
 			<div class="editor">
-				<textarea class="markup-editor visible" onkeyup="updateMarkup()">markup</textarea>
-				<textarea class="html-editor" onkeyup="updateHtml()">html</textarea>
+				<input type="hidden" value="1" id="postId">
+				<input type="hidden" value="0" id="published">
+				<textarea class="markup-editor visible" onkeyup="updateMarkup()" placeholder="Post content"></textarea>
+				<textarea class="html-editor" onkeyup="updateHtml()"></textarea>
 				<div class="editor-type">
 					<a href="#!" onclick="showMarkupEditor(this)" class="selected">Markup</a>
 					<a href="#!" onclick="showHtmlEditor(this)">HTML</a>

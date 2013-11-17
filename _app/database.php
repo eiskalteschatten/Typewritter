@@ -101,18 +101,20 @@
 			}
 		}
 
-		function insertIntoTable() {
+		function insertIntoPost($title, $body, $author, $published, $date) {
 			try {
-				
+			  	mysql_query("INSERT INTO ".$this->postsTable." (title, body, author, published, date_created, date_updated) VALUES ('".$title."', '".$body."', '".$author."', ".$published.",  '".$date."', '".$date."')", $this->connection) or die("An error has occured! ".mysql_error());				
+			  	
+			  	return mysql_insert_id();
 			}
 			catch(Exception $e) {
 				die($e);
 			}
 		}
 
-		function updateTable($table, $column, $toWrite, $id) {
+		function updatePost($title, $body, $date, $id) {
 			try {
-			  	mysql_query("UPDATE ".$this->generalTable." SET ".$column." = ".$toWrite." WHERE id=".$id, $this->connection) or die("An error has occured! ".mysql_error());
+			  	mysql_query("UPDATE ".$this->postsTable." SET title = '".$title."', body = '".$title."', date_updated = '".$date."' WHERE id = ".$id, $this->connection) or die("An error has occured! ".mysql_error());
 			}
 			catch(Exception $e) {
 				die($e);
