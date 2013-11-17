@@ -8,7 +8,7 @@ function saveDraft() {
 	var title = $('#postTitle').val();
 	var body = $('.markup-editor').val();
 
-	$.ajax({ url: 'ajax.php',
+	$.ajax({ url: '_app/ajax.php',
 		data: {action: 'save', id: id, published: published, title: title, body: body},
 		type: 'post',
 		success: function(msg) {

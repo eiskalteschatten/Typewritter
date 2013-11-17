@@ -3,7 +3,7 @@
 // Setup the database
 
 $(document).ready(function() {
-	$.ajax({ url: 'ajax.php',
+	$.ajax({ url: '_app/ajax.php',
 		data: {action: 'install'},
 		type: 'post',
 		success: function(msg) {
