@@ -41,3 +41,32 @@ function resetDropdowMenu(dropdown) {
 		closeDropdown(dropdown);
 	});	
 }
+
+
+// Functions for popups
+
+function openPopup(id) {
+	var obj = $('#'+id);
+	obj.show();
+	
+	var content = obj.find('.popup-content');
+	var width = content.outerWidth();
+	var height = content.outerHeight();
+	
+	content.css('margin-left', Math.round((width/2)) * -1 + 'px');
+	content.css('margin-top', Math.round((height/2)) * -1 + 'px');
+	
+	obj.stop().animate({opacity: 1}, 200);
+	
+	obj.find('.popup-background').click(function() {
+		closePopup(id);
+	});
+}
+
+function closePopup(id) {
+	var obj = $('#'+id);
+	
+	obj.stop().animate({opacity: 0}, 200, function() {
+		$(this).hide();
+	});
+}

@@ -26,23 +26,27 @@
 					<a href="index.php" class="mainlink">Writter &rarr;</a>
 					<?php include("_includes/writter-menu.php") ?>
 				</div>
-				<a href="files">Insert image</a>
-				<a href="files">Save draft</a>
-				<a href="files">Publish</a>
+				<a href="#!" onclick="">Insert image</a>
+				<a href="#!" onclick="saveDraft()">Save draft</a>
+				<a href="#!" onclick="publish()">Publish</a>
 			</div>
 			<?php include("_includes/settings-menu.php") ?>
 		</div>
 		<div class="content">
 			<div class="editor">
-				<textarea class="markup-editor visible">markup</textarea>
-				<textarea class="html-editor">html</textarea>
+				<textarea class="markup-editor visible" onkeyup="updateMarkup()">markup</textarea>
+				<textarea class="html-editor" onkeyup="updateHtml()">html</textarea>
 				<div class="editor-type">
 					<a href="#!" onclick="showMarkupEditor(this)" class="selected">Markup</a>
 					<a href="#!" onclick="showHtmlEditor(this)">HTML</a>
 				</div>
+				<div class="markup-help">
+					<a href="#!" onclick="openPopup('markup-popup')">Markup Help</a>
+					<?php include("_includes/markup-help.php") ?>
+				</div>
 			</div>
 			<div class="preview">
-				estt
+
 			</div>
 		</div>
 	</body>

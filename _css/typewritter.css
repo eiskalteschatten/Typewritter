@@ -85,3 +85,39 @@ a:hover {
 	display: none;
 	border-right: 1px solid #222222;
 }
+
+
+/* Styles for popups */
+
+.popup {
+	display: none;
+	opacity: 0;
+}
+
+.popup-background {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	background: rgba(255, 255, 255, .7);
+}
+
+.popup-content {
+	position: fixed;
+	z-index: 11;
+	left: 50%;
+	top: 50%;
+	background: #ffffff;
+	box-shadow: 0 0 30px #d0d0d0;
+	padding: 20px;
+}
+
+.popup-content, .popup-content a {
+	font-size: 15px;
+}
+
+.popup-content .close {
+	text-align: center;
+}
