@@ -11,8 +11,8 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 
 - Automated install [development]
 - Create posts [development]
+- Edit posts [development]
 - Markup to HTML converter [planning]
-- Edit posts [planning]
 - Create comments [not yet started]
 - Edit comments [not yet started]
 - Multiple authors (login system) [not yet started]
