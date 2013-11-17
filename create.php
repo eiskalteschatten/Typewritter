@@ -32,7 +32,10 @@
 			</div>
 			<?php include("_includes/settings-menu.php") ?>
 		</div>
-		<div class="content">
+		<div class="content with-toolbar">
+			<div class="toolbar">
+				<input type="text" id="postTitle" placeholder="Post title">
+			</div>
 			<div class="editor">
 				<textarea class="markup-editor visible" onkeyup="updateMarkup()">markup</textarea>
 				<textarea class="html-editor" onkeyup="updateHtml()">html</textarea>
@@ -40,10 +43,10 @@
 					<a href="#!" onclick="showMarkupEditor(this)" class="selected">Markup</a>
 					<a href="#!" onclick="showHtmlEditor(this)">HTML</a>
 				</div>
-				<div class="markup-help">
+				<div class="markup-help visible">
 					<a href="#!" onclick="openPopup('markup-popup')">Markup Help</a>
-					<?php include("_includes/markup-help.php") ?>
 				</div>
+				<?php include("_includes/markup-help.php") ?>				
 			</div>
 			<div class="preview">
 

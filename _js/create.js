@@ -1,5 +1,43 @@
 // Scripts for the "Create post" page
 
+// Saving and publishing functions
+
+function saveDraft() {
+	$.ajax({ url: 'ajax.php',
+		data: {action: 'save'},
+		type: 'post',
+		success: function(msg) {
+			console.log("Success\n"+msg);
+		},
+		error: function(msg) {
+			console.log("Error\n"+msg);			
+		}
+	});
+}
+
+function publish() {
+
+}
+
+// Live preview functions
+
+function updatePreview() {
+	
+}
+
+function updateMarkup() {
+
+
+	updatePreview();
+}
+
+function updateHtml() {
+	
+	
+	updatePreview();
+}
+
+
 // Editor functions
 
 function showMarkupEditor(button) {
@@ -8,6 +46,8 @@ function showMarkupEditor(button) {
 	
 	$('.editor-type').find('a').removeClass('selected');
 	$(button).addClass('selected');
+	
+	$('.markup-help').addClass('visible');
 }
 
 function showHtmlEditor(button) {
@@ -16,4 +56,6 @@ function showHtmlEditor(button) {
 	
 	$('.editor-type').find('a').removeClass('selected');
 	$(button).addClass('selected');
+	
+	$('.markup-help').removeClass('visible');
 }

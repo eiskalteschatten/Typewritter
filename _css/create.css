@@ -1,16 +1,34 @@
 /* Style sheets for the "Create post" page */
 
-
 /* Styles for the editor pane */
 
 .editor {
 	float: left;
-	width: calc(50% - 31px);
+	width: calc(50% - 32px);
 	height: 100%;
-	border-right: 1px solid #333333;
+	border-right: 2px solid #e0e0e0;
 	padding: 15px;
 	font-weight: 400;
 	position: relative;
+}
+
+.markup-editor, .html-editor {
+	display: none;
+	height: calc(100% - 61px);
+	width: 100%;
+	border: 0;
+	resize: none;
+	outline: none;
+}
+
+.markup-editor {
+	font-family: 'Inconsolata', Courier, serif;
+	font-size: 17px;
+}
+
+.html-editor {
+	font-family: Courier, serif;
+	font-size: 13px;
 }
 
 .editor-type {
@@ -35,23 +53,17 @@
 	border-top: 1px solid #c0c0c0;
 }
 
-.markup-editor, .html-editor {
+.markup-help {
+	position: absolute;
+	bottom: 0;
+	right: 10px;
+	text-align: right;
+	padding: 3px;
 	display: none;
-	height: calc(100% - 15px);
-	width: 100%;
-	border: 0;
-	resize: none;
-	outline: none;
 }
 
-.markup-editor {
-	font-family: 'Inconsolata', Courier, serif;
-	font-size: 17px;
-}
-
-.html-editor {
-	font-family: Courier, serif;
-	font-size: 13px;
+.markup-help, .markup-help a {
+	font-size: 12px;
 }
 
 
@@ -59,7 +71,9 @@
 
 .preview {
 	float: left;
-	width: calc(50% - 31px);
+	width: calc(50% - 32px);
 	height: 100%;
 	padding: 15px;
+	position: relative;
+	overflow: auto;
 }

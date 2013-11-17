@@ -29,6 +29,10 @@ a:hover {
 	position: relative;
 }
 
+.content.with-toolbar {
+	height: calc(100% - 121px);
+}
+
 .visible {
 	display: block !important;
 }
@@ -87,6 +91,26 @@ a:hover {
 }
 
 
+/* Styles for the toolbar */
+
+.toolbar {
+	height: 26px;
+	background: #e0e0e0;
+	padding: 10px 10px;
+}
+
+.toolbar input[type="text"] {
+	border: 0;
+	background: #e0e0e0;
+	width: calc(50% - 4px);
+	height: 100%;
+	float: left;
+	font-family: 'Muli', sans-serif;
+	font-size: 17px;
+	outline: none;
+}
+
+
 /* Styles for popups */
 
 .popup {
@@ -114,10 +138,11 @@ a:hover {
 	padding: 20px;
 }
 
-.popup-content, .popup-content a {
-	font-size: 15px;
+.popup-content, .popup-content p, .popup-content a {
+	font-size: 13px;
 }
 
-.popup-content .close {
+.popup-content .close, .popup-content .close a {
 	text-align: center;
+	font-size: 12px;
 }
