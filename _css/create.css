@@ -1,0 +1,65 @@
+/* Style sheets for the "Create post" page */
+
+
+/* Styles for the editor pane */
+
+.editor {
+	float: left;
+	width: calc(50% - 31px);
+	height: 100%;
+	border-right: 1px solid #333333;
+	padding: 15px;
+	font-weight: 400;
+	position: relative;
+}
+
+.editor-type {
+	position: absolute;
+	bottom: 0;
+}
+
+.editor-type a {
+	color: #000000;
+	font-size: 12px;
+	text-decoration: none;
+	text-transform: uppercase;
+	display: inline-block;
+	margin-right: 10px;
+	padding: 3px;
+	float: left;
+	border-top: 1px solid #ffffff;
+}
+
+.editor-type a.selected {
+	color: #666666;
+	border-top: 1px solid #c0c0c0;
+}
+
+.markup-editor, .html-editor {
+	display: none;
+	height: calc(100% - 15px);
+	width: 100%;
+	border: 0;
+	resize: none;
+	outline: none;
+}
+
+.markup-editor {
+	font-family: 'Inconsolata', Courier, serif;
+	font-size: 17px;
+}
+
+.html-editor {
+	font-family: Courier, serif;
+	font-size: 13px;
+}
+
+
+/* Styles for the preview pane */
+
+.preview {
+	float: left;
+	width: calc(50% - 31px);
+	height: 100%;
+	padding: 15px;
+}
