@@ -16,11 +16,8 @@
 			try {
 				if (!$this->connection) {
 				echo 
-					// Establish a connection to MySQL if it doesn't already exist. Die if no connection could be established.
-					$this->connection = mysql_connect(dbHost.":".dbPort, dbUser, dbPassword) or die("Could not connect to MySQL!\n" + mysql_error());
-
-					// Select the database defined in config.php. Die if no connection could be established.
-					$this->database = mysql_select_db(dbName, $this->connection) or die("Could not connect to the database \"".dbName."\"!\n" + mysql_error());;
+					// Establish a connection to MySQL if it doesn't already exist and select the database defined in config.php. Die if no connection could be established.
+					$this->connection = new mysqli(dbHost.":".dbPort, dbUser, dbPassword, dbName) or die("Could not connect to the database \"".dbName."\"!\n" + mysqli_error());
 				}
 			}
 			catch(Exception $e) {
@@ -32,7 +29,7 @@
 			try {
 				if ($this->connection) {
 					// Close the connection to MySQL if it exists
-					mysql_close($this->connection);
+					mysqli_close($this->connection);
 				}
 			}
 			catch(Exception $e) {
@@ -42,15 +39,15 @@
 	
 		function initDatabase() {
 			try {
-				if (mysql_query("SHOW TABLES LIKE tw_general", $this->connection) === false) {
+				if ($this->connection->query("SHOW TABLES LIKE tw_general") === false) {
 					// If the table 'tw_general' doens't exist, then assume no installation has occurred and install.
 
-					// Create tables					
-					mysql_query("CREATE TABLE ".$this->generalTable."(
+					// Create tables using a standard query since there is no risk of MySQL injections at this point
+					$this->connection->query("CREATE TABLE ".$this->generalTable."(
 						id INT NOT NULL AUTO_INCREMENT, 
-						PRIMARY KEY(id))", $this->connection) or die("An error has occured! ".mysql_error());
+						PRIMARY KEY(id))") or die("An error has occured! ".mysqli_error());
 						
-					mysql_query("CREATE TABLE ".$this->postsTable."(
+					$this->connection->query("CREATE TABLE ".$this->postsTable."(
 						id INT NOT NULL AUTO_INCREMENT, 
 						PRIMARY KEY(id), 
 						title TEXT, 
@@ -58,9 +55,9 @@
 						author INT, 
 						published BOOL, 
 						date_created DATETIME, 
-						date_updated DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
+						date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
 						
-					mysql_query("CREATE TABLE ".$this->commentsTable."(
+					$this->connection->query("CREATE TABLE ".$this->commentsTable."(
 						id INT NOT NULL AUTO_INCREMENT, 
 						PRIMARY KEY(id), 
 						post INT, 
@@ -68,9 +65,9 @@
 						author_name TEXT, 
 						author_email TEXT, 
 						date_created DATETIME, 
-						date_updated DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
+						date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
 						
-					mysql_query("CREATE TABLE ".$this->usersTable."(
+					$this->connection->query("CREATE TABLE ".$this->usersTable."(
 						id INT NOT NULL AUTO_INCREMENT, 
 						PRIMARY KEY(id), 
 						name TEXT, 
@@ -78,7 +75,7 @@
 						username VARCHAR(25), 
 						password VARCHAR(25), 
 						date_created DATETIME, 
-						date_updated DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
+						date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
 					
 					// Fill in default options
 					
@@ -103,18 +100,26 @@
 
 		function insertIntoPost($title, $body, $author, $published, $date) {
 			try {
-			  	mysql_query("INSERT INTO ".$this->postsTable." (title, body, author, published, date_created, date_updated) VALUES ('".$title."', '".$body."', '".$author."', ".$published.",  '".$date."', '".$date."')", $this->connection) or die("An error has occured! ".mysql_error());				
-			  	
-			  	return mysql_insert_id();
+				// Insert into the posts table using prepared statements to avoid MySQL injections.
+				
+				$stmt = $this->connection->prepare("INSERT INTO ".$this->postsTable." (title, body, author, published, date_created, date_updated) VALUES (?, ?, ?, ?, ?, ?)");
+ 				$stmt->bind_param('ssiiss', $title, $body, $author, $published, $date, $date);
+ 				$stmt->execute();
+
+				return $this->connection->insert_id;
 			}
 			catch(Exception $e) {
 				die($e);
 			}
 		}
 
-		function updatePost($title, $body, $date, $id) {
+		function updatePost($title, $body, $author, $published, $date, $id) {
 			try {
-			  	mysql_query("UPDATE ".$this->postsTable." SET title = '".$title."', body = '".$title."', date_updated = '".$date."' WHERE id = ".$id, $this->connection) or die("An error has occured! ".mysql_error());
+				// Update the posts table using prepared statements to avoid MySQL injections.
+				
+				$stmt = $this->connection->prepare("UPDATE ".$this->postsTable." SET title = ?, body = ?, author = ?, published = ?, date_updated = ? where id = ?");
+ 				$stmt->bind_param('ssiisi', $title, $body, $author, $published, $date, $id);
+ 				$stmt->execute();
 			}
 			catch(Exception $e) {
 				die($e);
