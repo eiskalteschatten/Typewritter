@@ -56,7 +56,9 @@
 						title TEXT, 
 						body TEXT, 
 						author INT, 
-						date_created DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
+						published BOOL, 
+						date_created DATETIME, 
+						date_updated DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
 						
 					mysql_query("CREATE TABLE ".$this->commentsTable."(
 						id INT NOT NULL AUTO_INCREMENT, 
@@ -65,7 +67,8 @@
 						body TEXT, 
 						author_name TEXT, 
 						author_email TEXT, 
-						date_created DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
+						date_created DATETIME, 
+						date_updated DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
 						
 					mysql_query("CREATE TABLE ".$this->usersTable."(
 						id INT NOT NULL AUTO_INCREMENT, 
@@ -74,7 +77,8 @@
 						author_email TEXT, 
 						username VARCHAR(25), 
 						password VARCHAR(25), 
-						date_created DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
+						date_created DATETIME, 
+						date_updated DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
 					
 					// Fill in default options
 					
@@ -88,7 +92,7 @@
 			}
 		}
 		
-		function readFromTable($table, $column) {
+		function selectFromTable($table, $column) {
 			try {
 				
 			}
@@ -96,8 +100,17 @@
 				die($e);
 			}
 		}
-		
-		function writeToTable($table, $column, $toWrite, $id) {
+
+		function insertIntoTable() {
+			try {
+				
+			}
+			catch(Exception $e) {
+				die($e);
+			}
+		}
+
+		function updateTable($table, $column, $toWrite, $id) {
 			try {
 			  	mysql_query("UPDATE ".$this->generalTable." SET ".$column." = ".$toWrite." WHERE id=".$id, $this->connection) or die("An error has occured! ".mysql_error());
 			}
