@@ -91,6 +91,25 @@
 			}
 		}
 		
+		function selectAllFromTable($table, $id) {
+			try {
+				// Generic select statement to get small bits of information from the database
+				$results = array();
+				$result = $this->connection->query("SELECT * FROM ".$table." WHERE ID=".$id) or die("An error has occured! ".mysqli_error());
+			    
+			    while ($row = $result->fetch_assoc()) {
+					$results[] = $row[$column];
+				}
+			    
+			    $result->close();
+			    
+			   	return $results;
+			}
+			catch(Exception $e) {
+				die($e);
+			}
+		}
+		
 		function selectFromTable($table, $column, $id) {
 			try {
 				// Generic select statement to get small bits of information from the database
