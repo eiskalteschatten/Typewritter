@@ -6,6 +6,11 @@
 	class Database {
 		private $connection = null;
 		private $database = null;
+
+		public $generalTable = "tw_general";
+		public $postsTable = "tw_posts";
+		public $commentsTable = "tw_comments";
+		public $usersTable = "tw_users";
 	
 		function __construct() {
 			try {
@@ -41,23 +46,34 @@
 					// If the table 'tw_general' doens't exist, then assume no installation has occurred and install.
 
 					// Create tables					
-					mysql_query("CREATE TABLE tw_general(
+					mysql_query("CREATE TABLE ".$this->generalTable."(
 						id INT NOT NULL AUTO_INCREMENT, 
 						PRIMARY KEY(id))", $this->connection) or die("An error has occured! ".mysql_error());
-					mysql_query("CREATE TABLE tw_posts(
+						
+					mysql_query("CREATE TABLE ".$this->postsTable."(
 						id INT NOT NULL AUTO_INCREMENT, 
 						PRIMARY KEY(id), 
 						title TEXT, 
 						body TEXT, 
-						author TEXT, 
+						author INT, 
 						date_created DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
-					mysql_query("CREATE TABLE tw_comments(
+						
+					mysql_query("CREATE TABLE ".$this->commentsTable."(
 						id INT NOT NULL AUTO_INCREMENT, 
 						PRIMARY KEY(id), 
 						post INT, 
 						body TEXT, 
-						author TEXT, 
+						author_name TEXT, 
 						author_email TEXT, 
+						date_created DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
+						
+					mysql_query("CREATE TABLE ".$this->usersTable."(
+						id INT NOT NULL AUTO_INCREMENT, 
+						PRIMARY KEY(id), 
+						name TEXT, 
+						author_email TEXT, 
+						username VARCHAR(25), 
+						password VARCHAR(25), 
 						date_created DATETIME)", $this->connection) or die("An error has occured! ".mysql_error());
 					
 					// Fill in default options
@@ -72,7 +88,7 @@
 			}
 		}
 		
-		function readFromTable($table) {
+		function readFromTable($table, $column) {
 			try {
 				
 			}
@@ -81,9 +97,9 @@
 			}
 		}
 		
-		function writeToTable($table, $towrite) {
+		function writeToTable($table, $column, $toWrite, $id) {
 			try {
-			  	
+			  	mysql_query("UPDATE ".$this->generalTable." SET ".$column." = ".$toWrite." WHERE id=".$id, $this->connection) or die("An error has occured! ".mysql_error());
 			}
 			catch(Exception $e) {
 				die($e);
