@@ -17,7 +17,7 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Edit posts
 - Automated install
 
-**Panning**
+**Planning**
 - Markdown to HTML converter
 
 **Not yet started**
