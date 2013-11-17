@@ -9,7 +9,8 @@ function saveDraft() {
 	var markdown = $('.markdown-editor').val();
 	var html = $('.html-editor').val();
 
-	$.ajax({ url: '_app/ajax.php',
+	$.ajax({
+		url: '_app/ajax.php',
 		data: {action: 'save', id: id, published: published, title: title, markdown: markdown, html: html},
 		type: 'post',
 		success: function(msg) {
