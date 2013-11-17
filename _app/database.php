@@ -38,49 +38,52 @@
 	
 		function initDatabase() {
 			try {
-				if ($this->connection->query("SHOW TABLES LIKE tw_general") === false) {
-					// If the table 'tw_general' doens't exist, then assume no installation has occurred and install.
-
-					// Create tables using a standard query since there is no risk of MySQL injections at this point
-					$this->connection->query("CREATE TABLE ".$this->generalTable."(
-						id INT NOT NULL AUTO_INCREMENT, 
-						PRIMARY KEY(id))") or die("An error has occured! ".mysqli_error());
+				$result = $this->connection->query("SHOW TABLES IN ".dbName);
+				
+				if ($result !== false) {
+					if ($result->num_rows == 0) {		// Check to see if there are any rows in the database defined in config.php. If not, then no installation has occurred.
+						// Create tables using a standard query since there is no risk of MySQL injections at this point
+						$this->connection->query("CREATE TABLE ".$this->generalTable."(
+							id INT NOT NULL AUTO_INCREMENT, 
+							PRIMARY KEY(id))") or die("An error has occured! ".mysqli_error());
 						
-					$this->connection->query("CREATE TABLE ".$this->postsTable."(
-						id INT NOT NULL AUTO_INCREMENT, 
-						PRIMARY KEY(id), 
-						title TEXT, 
-						body TEXT, 
-						author INT, 
-						published BOOL, 
-						date_created DATETIME, 
-						date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
+						$this->connection->query("CREATE TABLE ".$this->postsTable."(
+							id INT NOT NULL AUTO_INCREMENT, 
+							PRIMARY KEY(id), 
+							title TEXT, 
+							markup TEXT, 
+							html TEXT, 
+							author INT, 
+							published BOOL, 
+							date_created DATETIME, 
+							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
 						
-					$this->connection->query("CREATE TABLE ".$this->commentsTable."(
-						id INT NOT NULL AUTO_INCREMENT, 
-						PRIMARY KEY(id), 
-						post INT, 
-						body TEXT, 
-						author_name TEXT, 
-						author_email TEXT, 
-						date_created DATETIME, 
-						date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
+						$this->connection->query("CREATE TABLE ".$this->commentsTable."(
+							id INT NOT NULL AUTO_INCREMENT, 
+							PRIMARY KEY(id), 
+							post INT, 
+							body TEXT, 
+							author_name TEXT, 
+							author_email TEXT, 
+							date_created DATETIME, 
+							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
 						
-					$this->connection->query("CREATE TABLE ".$this->usersTable."(
-						id INT NOT NULL AUTO_INCREMENT, 
-						PRIMARY KEY(id), 
-						name TEXT, 
-						author_email TEXT, 
-						username VARCHAR(25), 
-						password VARCHAR(25), 
-						date_created DATETIME, 
-						date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
+						$this->connection->query("CREATE TABLE ".$this->usersTable."(
+							id INT NOT NULL AUTO_INCREMENT, 
+							PRIMARY KEY(id), 
+							name TEXT, 
+							author_email TEXT, 
+							username VARCHAR(25), 
+							password VARCHAR(25), 
+							date_created DATETIME, 
+							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
 					
-					// Fill in default options
+						// Fill in default options
 					
-				}
-				else {
-					die("TypeWritter is already installed!");
+					}
+					else {
+						die("TypeWritter is already installed!");
+					}
 				}
 			}
 			catch(Exception $e) {
@@ -107,11 +110,11 @@
 			}
 		}
 
-		function insertIntoPost($title, $body, $author, $published, $date) {
+		function insertIntoPost($title, $markup, $html, $author, $published, $date) {
 			try {
 				// Insert into the posts table using prepared statements to avoid MySQL injections.
-				$stmt = $this->connection->prepare("INSERT INTO ".$this->postsTable." (title, body, author, published, date_created, date_updated) VALUES (?, ?, ?, ?, ?, ?)");
- 				$stmt->bind_param('ssiiss', $title, $body, $author, $published, $date, $date);
+				$stmt = $this->connection->prepare("INSERT INTO ".$this->postsTable." (title, markup, html, author, published, date_created, date_updated) VALUES (?, ?, ?, ?, ?, ?)");
+ 				$stmt->bind_param('sssiiss', $title, $markup, $html, $author, $published, $date, $date);
  				$stmt->execute();
 			    $stmt->close();
 
@@ -122,11 +125,11 @@
 			}
 		}
 
-		function updatePost($title, $body, $author, $published, $date, $id) {
+		function updatePost($title, $markup, $html, $author, $published, $date, $id) {
 			try {
 				// Update the posts table using prepared statements to avoid MySQL injections.
-				$stmt = $this->connection->prepare("UPDATE ".$this->postsTable." SET title = ?, body = ?, author = ?, published = ?, date_updated = ? where id = ?");
- 				$stmt->bind_param('ssiisi', $title, $body, $author, $published, $date, $id);
+				$stmt = $this->connection->prepare("UPDATE ".$this->postsTable." SET title = ?, markup = ?, html = ?, author = ?, published = ?, date_updated = ? where id = ?");
+ 				$stmt->bind_param('sssiisi', $title, $body, $html, $author, $published, $date, $id);
  				$stmt->execute();
 			    $stmt->close();
 			}

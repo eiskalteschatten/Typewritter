@@ -18,11 +18,8 @@ $(document).ready(function() {
 function placeMessage(msg) {
 	$('.loader').hide();
 	
-	if (msg == "1") {
+	if (msg == "") {
 		msg = "Typewritter was successfully installed!"
-	}
-	else {
-		msg = msg.replace("1", "");
 	}
 	
 	$('.message').text(msg);
