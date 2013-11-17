@@ -51,7 +51,7 @@
 							id INT NOT NULL AUTO_INCREMENT, 
 							PRIMARY KEY(id), 
 							title TEXT, 
-							markup TEXT, 
+							markdown TEXT, 
 							html TEXT, 
 							author INT, 
 							published BOOL, 
@@ -110,11 +110,11 @@
 			}
 		}
 
-		function insertIntoPost($title, $markup, $html, $author, $published, $date) {
+		function insertIntoPost($title, $markdown, $html, $author, $published, $date) {
 			try {
 				// Insert into the posts table using prepared statements to avoid MySQL injections.
-				$stmt = $this->connection->prepare("INSERT INTO ".$this->postsTable." (title, markup, html, author, published, date_created, date_updated) VALUES (?, ?, ?, ?, ?, ?)");
- 				$stmt->bind_param('sssiiss', $title, $markup, $html, $author, $published, $date, $date);
+				$stmt = $this->connection->prepare("INSERT INTO ".$this->postsTable." (title, markdown, html, author, published, date_created, date_updated) VALUES (?, ?, ?, ?, ?, ?, ?)");
+ 				$stmt->bind_param('sssiiss', $title, $markdown, $html, $author, $published, $date, $date);
  				$stmt->execute();
 			    $stmt->close();
 
@@ -125,11 +125,11 @@
 			}
 		}
 
-		function updatePost($title, $markup, $html, $author, $published, $date, $id) {
+		function updatePost($title, $markdown, $html, $author, $published, $date, $id) {
 			try {
 				// Update the posts table using prepared statements to avoid MySQL injections.
-				$stmt = $this->connection->prepare("UPDATE ".$this->postsTable." SET title = ?, markup = ?, html = ?, author = ?, published = ?, date_updated = ? where id = ?");
- 				$stmt->bind_param('sssiisi', $title, $body, $html, $author, $published, $date, $id);
+				$stmt = $this->connection->prepare("UPDATE ".$this->postsTable." SET title = ?, markdown = ?, html = ?, author = ?, published = ?, date_updated = ? where id = ?");
+ 				$stmt->bind_param('sssiisi', $title, $markdown, $html, $author, $published, $date, $id);
  				$stmt->execute();
 			    $stmt->close();
 			}

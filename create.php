@@ -35,24 +35,26 @@
 		<div class="content with-toolbar">
 			<div class="toolbar">
 				<input type="text" id="postTitle" placeholder="Post title">
+				<div class="date-updated">
+					Last updated:
+					<div class="date"></div>
+				</div>
 			</div>
 			<div class="editor">
-				<input type="hidden" value="1" id="postId">
+				<input type="hidden" value="" id="postId">
 				<input type="hidden" value="0" id="published">
-				<textarea class="markup-editor visible" onkeyup="updateMarkup()" placeholder="Post content"></textarea>
-				<textarea class="html-editor" onkeyup="updateHtml()"></textarea>
+				<textarea class="markdown-editor visible" onkeyup="updateHtml()" placeholder="Post content"></textarea>
+				<textarea class="html-editor" readonly placeholder="Automatically generated HTML"></textarea>
 				<div class="editor-type">
-					<a href="#!" onclick="showMarkupEditor(this)" class="selected">Markup</a>
+					<a href="#!" onclick="showmarkdownEditor(this)" class="selected">Markdown</a>
 					<a href="#!" onclick="showHtmlEditor(this)">HTML</a>
 				</div>
-				<div class="markup-help visible">
-					<a href="#!" onclick="openPopup('markup-popup')">Markup Help</a>
+				<div class="markdown-help visible">
+					<a href="#!" onclick="openPopup('markdown-popup')">Markdown Help</a>
 				</div>
-				<?php include("_includes/markup-help.php") ?>				
+				<?php include("_includes/markdown-help.php") ?>				
 			</div>
-			<div class="preview">
-
-			</div>
+			<div class="preview"></div>
 		</div>
 	</body>
 </html>

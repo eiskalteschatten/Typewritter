@@ -14,15 +14,16 @@
 	if ($_POST["action"] == "save") {
 		$id = $_POST["id"];
 		$title = $_POST["title"];
-		$body = $_POST["body"];
+		$markdown = $_POST["markdown"];
+		$html = $_POST["html"];
 		$published = $_POST["published"];
 	
 		$post = new Post($id);
-		$post->save($title, $body, $published);	
+		$post->save($title, $markdown, $html, $published);	
+		$newId = $post->getId();
 		
-		echo $post->getId();
+		$return = array('id' => $newId, 'date' => $post->getDateUpdated($newId));
 		
-		// TODO: Update id field in create.php after a save
-		// TODO: Create and update saved date field
+		echo json_encode($return);
 	}
 ?>

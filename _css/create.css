@@ -1,5 +1,19 @@
 /* Style sheets for the "Create post" page */
 
+/* Styles for the toolbar */
+
+.date-updated {
+	float: right;
+	margin-top: -4px;
+	display: none;
+}
+
+.date-updated, .date-updated .date {
+	font-size: 11px;
+	color: #999999;
+	text-align: right;
+}
+
 /* Styles for the editor pane */
 
 .editor {
@@ -12,7 +26,7 @@
 	position: relative;
 }
 
-.markup-editor, .html-editor {
+.markdown-editor, .html-editor {
 	display: none;
 	height: calc(100% - 61px);
 	width: 100%;
@@ -21,7 +35,7 @@
 	outline: none;
 }
 
-.markup-editor {
+.markdown-editor {
 	font-family: 'Inconsolata', Courier, serif;
 	font-size: 17px;
 }
@@ -53,7 +67,7 @@
 	border-top: 1px solid #c0c0c0;
 }
 
-.markup-help {
+.markdown-help {
 	position: absolute;
 	bottom: 0;
 	right: 10px;
@@ -62,7 +76,7 @@
 	display: none;
 }
 
-.markup-help, .markup-help a {
+.markdown-help, .markdown-help a {
 	font-size: 12px;
 }
 

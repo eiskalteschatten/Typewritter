@@ -11,8 +11,8 @@
 	define("dbCharset", "utf8");
 	
 	
-	// Set the timezone
-	// See http://www.php.net/manual/en/timezones.php for a list of PHP timezones
+	// Set date options
 	
-	define("timezone", "Europe/Berlin");
+	define("timeZone", "Europe/Berlin");	// See http://www.php.net/manual/en/timezones.php for a list of PHP timezones
+	define("timeFormat", "Y-m-d H:i:s");	// See http://us1.php.net/manual/en/function.date.php for more information about PHP date formats
 ?>

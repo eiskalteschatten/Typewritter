@@ -20,13 +20,13 @@
 			}
 		}
 	
-		function save($title, $body, $published) {
+		function save($title, $markdown, $html, $published) {
 			//$author = $this->getAuthor();
 			//$author->getId();
 		
 			// Set timezone and get today's date
-			date_default_timezone_set(timezone);
-			$date = date('Y-m-d H:i:s');
+			date_default_timezone_set(timeZone);
+			$date = date(timeFormat);
 			
 			if (!$published || $published == "") {
 				// Automatically set published to false when saving if it hasn't been published already
@@ -35,11 +35,11 @@
 			
 			if ($this->getId() != "") {
 				// Update the post if an ID already exists
-				$this->database->updatePost($title, $body, 1, $published, $date, $this->getId());
+				$this->database->updatePost($title, $markdown, $html, 1, $published, $date, $this->getId());
 			}
 			else {
 				// If an ID does not exist, insert the post into the database. The function returns the new ID.
-				$id = $this->database->insertIntoPost($title, $body, 1, $published, $date);
+				$id = $this->database->insertIntoPost($title, $markdown, $html, 1, $published, $date);
 				
 				// Set the new post ID.
 				$this->setId($id);
@@ -60,6 +60,13 @@
 		
 		function setAuthor($author) {
 			$this->author = $author;
+		}
+		
+		function getDateUpdated($id) {
+			$table = $this->database->postsTable;
+			$date = $this->database->selectFromTable($table, 'date_updated', $id);
+		
+			return $date[0];
 		}
 	}
 ?>

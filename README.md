@@ -9,13 +9,16 @@ Progress
 
 Typewritter is still in its infancy and as such should not yet be used for anything serious since most of it doesn't work yet. Here is a list of the current development stages and their statuses:
 
-- Automated install [development]
-- Create posts [development]
+- Create posts [stable]
+
 - Edit posts [development]
-- Markup to HTML converter [planning]
+- Automated install [development]
+
+- Markdown to HTML converter [planning]
+
+- Multiple authors (login system) [not yet started]
 - Create comments [not yet started]
 - Edit comments [not yet started]
-- Multiple authors (login system) [not yet started]
 - Simple, sandbox frontend [not yet started]
 
 The list will continue to grow as more features are added or thought of.
