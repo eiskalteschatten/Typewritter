@@ -27,7 +27,7 @@
 			<?php include("_includes/settings-menu.php") ?>
 		</div>
 		<div class="content">
-			<table>
+			<table class="allposts">
 				<?php
 					$allPosts = new Posts();
 					$posts = $allPosts->getAllPosts(15);
@@ -37,7 +37,7 @@
 						
 						echo "<td class='hidden'>".$post['id'] . "</td>";
 						echo "<td>".$post['title'] . "</td>";
-						echo "<td>".$post['markup'] . "</td>";
+						echo "<td>".$post['markdown'] . "</td>";
 						echo "<td>".$post['date_updated'] . "</td>";
 						echo "<td><a href=\"post.php?id=".$post['id'] . "\">Edit</a></td>";
 

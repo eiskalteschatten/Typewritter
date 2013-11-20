@@ -37,6 +37,10 @@ a:hover {
 	display: block !important;
 }
 
+.hidden {
+	display: none;
+}
+
 
 /* Styles for the menubar */
 
@@ -145,4 +149,21 @@ a:hover {
 .popup-content .close, .popup-content .close a {
 	text-align: center;
 	font-size: 12px;
+}
+
+
+/* Styles for the homepage */
+
+.allposts {
+	width: 100%;
+	border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.allposts td {
+	padding: 10px;
+}
+
+.allposts tr:hover {
+	background: #f0f0f0;
 }
