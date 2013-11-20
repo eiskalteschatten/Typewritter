@@ -27,14 +27,24 @@
 			<?php include("_includes/settings-menu.php") ?>
 		</div>
 		<div class="content">
-			<?php
-				$allPosts = new Posts();
-				$posts = $allPosts->getAllPosts(15);
+			<table>
+				<?php
+					$allPosts = new Posts();
+					$posts = $allPosts->getAllPosts(15);
 				
-				foreach ($posts as $post) {
-					echo $post['title'] . "<br>";
-				}
-			?>
+					foreach ($posts as $post) {
+						echo "<tr>";
+						
+						echo "<td class='hidden'>".$post['id'] . "</td>";
+						echo "<td>".$post['title'] . "</td>";
+						echo "<td>".$post['markup'] . "</td>";
+						echo "<td>".$post['date_updated'] . "</td>";
+						echo "<td><a href=\"post.php?id=".$post['id'] . "\">Edit</a></td>";
+
+						echo "</tr>";
+					}
+				?>
+			</table>
 		</div>
 	</body>
 </html>
