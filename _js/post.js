@@ -2,33 +2,40 @@
 
 // Saving and publishing functions
 
-function saveDraft() {
-	var id = $('#postId').val();
-	var published = $('#published').val();
-	var title = $('#postTitle').val();
-	var markdown = $('.markdown-editor').val();
-	var html = $('.html-editor').val();
+function saveDraft(button) {
+	$(button).stop().animate({opacity: 0}, 200, function() {
+		var id = $('#postId').val();
+		var published = $('#published').val();
+		var title = $('#postTitle').val();
+		var markdown = $('.markdown-editor').val();
+		var html = $('.html-editor').val();
 
-	$.ajax({
-		url: '_app/ajax.php',
-		data: {action: 'save', id: id, published: published, title: title, markdown: markdown, html: html},
-		type: 'post',
-		success: function(msg) {
-			console.log(msg);
-			
-			var values = JSON.parse(msg);
-			$('#postId').val(values.id);
-			$('.date-updated').show();
-			$('.date-updated').find('.date').text(values.date);
-		},
-		error: function(msg) {
-			console.log("Error\n"+msg);			
-		}
+		$.ajax({
+			url: '_app/ajax.php',
+			data: {action: 'save', id: id, published: published, title: title, markdown: markdown, html: html},
+			type: 'post',
+			success: function(msg) {
+				//console.log(msg);
+		
+				var values = JSON.parse(msg);
+				$('#postId').val(values.id);
+				$('.date-updated').show();
+				$('.date-updated').find('.date').text(values.date);
+		
+				$(button).stop().animate({opacity: 1}, 200);
+			},
+			error: function(msg) {
+				console.log("Error\n"+msg);	
+				$(button).stop().animate({opacity: 1}, 200);	
+			}
+		});	
 	});
 }
 
-function publish() {
-
+function publish(button) {
+	$(button).stop().animate({opacity: 0}, 200, function() {
+	
+	});
 }
 
 

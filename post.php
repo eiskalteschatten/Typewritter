@@ -1,6 +1,6 @@
-<?php require_once("typewritter.php") ?>
-
 <?php
+	require_once("typewritter.php");
+
 	$id = "";
 	$title = "";
 	$markdown = "";
@@ -53,8 +53,8 @@
 					<?php include("_includes/writter-menu.php") ?>
 				</div>
 				<a href="#!" onclick="">Insert image</a>
-				<a href="#!" onclick="saveDraft()">Save draft</a>
-				<a href="#!" onclick="publish()">Publish</a>
+				<a href="#!" onclick="saveDraft(this)">Save draft</a>
+				<a href="#!" onclick="publish(this)">Publish</a>
 			</div>
 			<?php include("_includes/settings-menu.php") ?>
 		</div>
