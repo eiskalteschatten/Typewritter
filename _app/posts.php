@@ -22,6 +22,10 @@
 			// Get all posts with or without a limit
 			$table = $this->database->postsTable;
 			return $this->database->selectAllFromTable($table, $limit);
-		}		
+		}
+		
+		function needsInstall() {
+			return $this->database->needsInstall();
+		}
 	}
 ?>

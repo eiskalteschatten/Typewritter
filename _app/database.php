@@ -38,9 +38,9 @@
 	
 		function initDatabase() {
 			try {
-				$result = $this->connection->query("SHOW TABLES IN ".dbName);
+				$result = $this->needsInstall();
 				
-				if ($result !== false) {
+				if ($result) {
 					if ($result->num_rows == 0) {		// Check to see if there are any rows in the database defined in config.php. If not, then no installation has occurred.
 						// Create tables using a standard query since there is no risk of MySQL injections at this point
 						$this->connection->query("CREATE TABLE ".$this->generalTable."(
@@ -89,6 +89,11 @@
 			catch(Exception $e) {
 				die($e);
 			}
+		}
+		
+		function needsInstall() {
+			// Return true if it doesn't need to be installed. Assume installation is needed if there are no tables in the database.
+			return ($this->connection->query("DESCRIBE tw_general") === false ? TRUE : FALSE);
 		}
 		
 		function selectAllFromRow($table, $id) {

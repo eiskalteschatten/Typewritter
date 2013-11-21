@@ -1,4 +1,12 @@
-<?php require_once("typewritter.php") ?>
+<?php
+	require_once("typewritter.php");
+	
+	$allPosts = new Posts();
+
+	if ($allPosts->needsInstall()) {
+		header('Location: install.php');
+	}
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 	<head>
@@ -31,7 +39,6 @@
 		<div class="content">
 			<table class="allposts">
 				<?php
-					$allPosts = new Posts();
 					$posts = $allPosts->getAllPosts(15);
 					
 					if (sizeof($posts) <= 0) {
