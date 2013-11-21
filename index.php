@@ -1,10 +1,19 @@
 <?php
 	require_once("typewritter.php");
 	
-	$allPosts = new Posts();
+	$allPosts = new Allposts();
 
 	if ($allPosts->needsInstall()) {
 		header('Location: install.php');
+	}
+	
+	$limit = 15;	// Set how many posts per page should be shown
+	
+	if (isset($_GET['page'])) {
+		$offset = $limit * $page;
+	}
+	else {
+		$offset = 0;
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -39,7 +48,7 @@
 		<div class="content">
 			<table class="allposts">
 				<?php
-					$posts = $allPosts->getAllPosts(15);
+					$posts = $allPosts->getAllPosts($limit, $offset);
 					
 					if (sizeof($posts) <= 0) {
 						echo "<tr><td>There are currently no posts! Click <a href='post.php'>here</a> to create one.</td></tr>";

@@ -1,11 +1,11 @@
 <?php
 	require_once("database.php");
-	require_once("posts.php");
+	require_once("allposts.php");
 	require_once("author.php");
 
 	// Class for a single post
 
-	class Post Extends Posts {
+	class Post Extends Allposts {
 		private $database = null;
 		private $id;
 		private $author;

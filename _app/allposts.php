@@ -4,7 +4,7 @@
 
 	// Class for all posts
 
-	class Posts {
+	class Allposts {
 		private $database = null;
 		private $id;
 		private $author;
