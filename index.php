@@ -8,6 +8,7 @@
 		<title>Typewritter</title>
 
 		<link rel="stylesheet" href="_css/typewritter.css" type="text/css">
+		<link rel="stylesheet" href="_css/allposts.css" type="text/css">
 
         <!--[if lte IE 8]>
             <script type="text/javascript" src="_js/ie.js"></script>
@@ -15,6 +16,7 @@
 
 		<script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="_js/typewritter.js"></script>
+		<script type="text/javascript" src="_js/allposts.js"></script>
 	</head>
 	<body>
 		<div class="menubar">
@@ -31,17 +33,22 @@
 				<?php
 					$allPosts = new Posts();
 					$posts = $allPosts->getAllPosts(15);
-				
-					foreach ($posts as $post) {
-						echo "<tr>";
+					
+					if (sizeof($posts) <= 0) {
+						echo "<tr><td>There are currently no posts! Click <a href='post.php'>here</a> to create one.</td></tr>";
+					}
+					else {
+						foreach ($posts as $post) {
+							echo "<tr onclick=\"openPost('".$post['id'] . "')\">";
 						
-						echo "<td class='hidden'>".$post['id'] . "</td>";
-						echo "<td>".$post['title'] . "</td>";
-						echo "<td>".$post['markdown'] . "</td>";
-						echo "<td>".$post['date_updated'] . "</td>";
-						echo "<td><a href=\"post.php?id=".$post['id'] . "\">Edit</a></td>";
+							echo "<td class='hidden'>".$post['id'] . "</td>";
+							echo "<td class='allposts-title'>".$post['title'] . "</td>";
+							echo "<td class='allposts-markdown'>".$post['markdown'] . "</td>";
+							echo "<td class='allposts-date'>".$post['date_updated'] . "</td>";
+							echo "<td class='allposts-edit'><a href=\"post.php?id=".$post['id'] . "\">Edit</a></td>";
 
-						echo "</tr>";
+							echo "</tr>";
+						}
 					}
 				?>
 			</table>

@@ -1,0 +1,45 @@
+/* Styles for the homepage */
+
+.allposts {
+	width: 100%;
+	border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.allposts td {
+	padding: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.allposts tr:hover {
+	background: #f0f0f0;
+}
+
+.allposts-title {
+	min-width: 150px;
+	max-width: 500px;
+}
+
+.allposts-markdown {
+	color: #999999;
+	min-width: 300px;
+	max-width: 500px;
+	font-size: 15px;
+}
+
+.allposts-date {
+	width: 165px;
+	font-size: 15px;
+	text-align: right;
+}
+
+.allposts-edit {
+	width: 35px;
+	text-align: right;
+}
+
+.allposts-edit, .allposts-edit a {
+	font-size: 15px;
+}
