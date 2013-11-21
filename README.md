@@ -23,6 +23,8 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 **Not yet started**
 - Create comments
 - Edit comments
+- Image uploader
+- File (uploads) manager
 - Simple, sandbox frontend
 - Search posts
 
