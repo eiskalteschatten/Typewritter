@@ -11,20 +11,20 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 
 **Stable**
 - Create posts
-
+- Edit posts
 
 **Development**
-- Edit posts
+- Markdown to HTML converter
 - Automated install
 
 **Planning**
-- Markdown to HTML converter
+- Multiple authors (login system)
 
 **Not yet started**
-- Multiple authors (login system)
 - Create comments
 - Edit comments
 - Simple, sandbox frontend
+- Search posts
 
 The list will continue to grow as more features are added or thought of.
 
