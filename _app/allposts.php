@@ -18,14 +18,20 @@
 			}
 		}
 	
-		function getAllPosts($limit=null) {
-			// Get all posts with or without a limit
+		function getAllPosts($limit = null, $offset = null) {
+			// Get all posts with or without a limit and with or without an offset
 			$table = $this->database->postsTable;
-			return $this->database->selectAllFromTable($table, $limit);
+			return $this->database->selectAllFromTable($table, $limit, $offset);
 		}
 		
 		function needsInstall() {
 			return $this->database->needsInstall();
+		}
+		
+		function getNumPosts() {
+			// Get the number of posts
+			$table = $this->database->postsTable;
+			return $this->database->countFromTable($table);
 		}
 	}
 ?>

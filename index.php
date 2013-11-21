@@ -10,9 +10,11 @@
 	$limit = 15;	// Set how many posts per page should be shown
 	
 	if (isset($_GET['page'])) {
-		$offset = $limit * $page;
+		$currentPage = $_GET['page'];
+		$offset = ($currentPage - 1) * $limit;
 	}
 	else {
+		$currentPage = 1;
 		$offset = 0;
 	}
 ?>
@@ -49,6 +51,7 @@
 			<table class="allposts">
 				<?php
 					$posts = $allPosts->getAllPosts($limit, $offset);
+					$numPosts = $allPosts->getNumPosts();
 					
 					if (sizeof($posts) <= 0) {
 						echo "<tr><td>There are currently no posts! Click <a href='post.php'>here</a> to create one.</td></tr>";
@@ -69,5 +72,23 @@
 				?>
 			</table>
 		</div>
+		<?php 
+			if ($numPosts > $limit) {
+				$numPages = ceil($numPosts / $limit);
+
+				echo "<div class='pagination'>Pages:";
+
+				for ($i = 1; $i <= $numPages; $i++) {
+					if ($currentPage == $i) {
+						echo "<span>".$i."</span>";
+					}
+					else {
+						echo "<a href='index.php?page=".$i."'>".$i."</a>";					
+					}
+				}
+
+				echo "</div>";
+			}
+		?>
 	</body>
 </html>

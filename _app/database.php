@@ -131,15 +131,18 @@
 			}
 		}
 
-		function selectAllFromTable($table, $limit=null) {
+		function selectAllFromTable($table, $limit = null, $offset = null) {
 			try {
 				// Generic select statement to get all information from a table in the database
 				
-				if ($limit) {  			// With limit
-					$query = "SELECT * FROM ".$table." limit ".$limit;
+				$query = "SELECT * FROM ".$table;
+				
+				if ($limit) {  			// Add limit if there is one
+					$query .= " LIMIT ".$limit;
 				}
-				else {			// Without limit
-					$query = "SELECT * FROM ".$table;
+				
+				if ($offset) {			// Add offset if there is one
+					$query .= " OFFSET ".$offset;
 				}
 				
 				$results = array();
@@ -180,6 +183,17 @@
  				$stmt->bind_param('sssiisi', $title, $markdown, $html, $author, $published, $date, $id);
  				$stmt->execute();
 			    $stmt->close();
+			}
+			catch(Exception $e) {
+				die($e);
+			}
+		}
+		
+		function countFromTable($table) {
+			try {
+				// Get the number of rows in a table
+				$result = $this->connection->query("SELECT * FROM ".$table) or die("An error has occured! ".mysqli_error());
+				return $result->num_rows;
 			}
 			catch(Exception $e) {
 				die($e);
