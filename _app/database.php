@@ -92,7 +92,7 @@
 		}
 		
 		function needsInstall() {
-			// Return true if it doesn't need to be installed. Assume installation is needed if there are no tables in the database.
+			// Return true if it doesn't need to be installed. Assume installation is needed if the table "tw_general" doesn't exist.
 			return ($this->connection->query("DESCRIBE tw_general") === false ? TRUE : FALSE);
 		}
 		
