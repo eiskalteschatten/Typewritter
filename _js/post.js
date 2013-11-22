@@ -2,21 +2,23 @@
 
 // Saving and publishing functions
 
-function saveDraft(button) {
+function savePost(button, publish) {
 	$(button).stop().animate({opacity: 0}, 200, function() {
 		var id = $('#postId').val();
-		var published = $('#published').val();
 		var title = $('#postTitle').val();
 		var markdown = $('.markdown-editor').val();
 		var html = $('.html-editor').val();
+		var published = $('#published').val();
+
+		if (publish) {
+			published = 1;		
+		}
 
 		$.ajax({
 			url: '_app/ajax.php',
 			data: {action: 'save', id: id, published: published, title: title, markdown: markdown, html: html},
 			type: 'post',
 			success: function(msg) {
-				//console.log(msg);
-		
 				var values = JSON.parse(msg);
 				$('#postId').val(values.id);
 				$('.date-updated').show();
@@ -33,8 +35,11 @@ function saveDraft(button) {
 }
 
 function publish(button) {
-	$(button).stop().animate({opacity: 0}, 200, function() {
-	
+	openPopup("confirmpublish-popup");
+
+	$("#publishPost").click(function() {
+		savePost(button, true);
+		closePopup("confirmpublish-popup");
 	});
 }
 

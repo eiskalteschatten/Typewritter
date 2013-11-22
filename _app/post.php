@@ -5,7 +5,7 @@
 
 	// Class for a single post
 
-	class Post Extends Allposts {
+	class Post {
 		private $database = null;
 		private $id;
 		private $author;

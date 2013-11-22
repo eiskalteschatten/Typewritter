@@ -150,3 +150,11 @@ a:hover {
 	text-align: center;
 	font-size: 12px;
 }
+
+.popup-content .close a {
+	margin-left: 30px;
+}
+
+.popup-content .close a:first-child {
+	margin-left: 0;
+}

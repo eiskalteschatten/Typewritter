@@ -53,7 +53,7 @@
 					<?php include("_includes/writter-menu.php") ?>
 				</div>
 				<a href="#!" onclick="">Insert image</a>
-				<a href="#!" onclick="saveDraft(this)">Save draft</a>
+				<a href="#!" onclick="savePost(this, false)">Save draft</a>
 				<a href="#!" onclick="publish(this)">Publish</a>
 			</div>
 			<?php include("_includes/settings-menu.php") ?>
@@ -81,6 +81,13 @@
 				<?php include("_includes/markdown-help.php") ?>				
 			</div>
 			<div class="preview"><?php echo $html; ?></div>
+		</div>
+		<div class="popup" id="confirmpublish-popup">
+			<div class="popup-background"></div>
+			<div class="popup-content">
+				<p>Are you sure you want to publish your post?</p>
+				<p class="close"><a href="#!" onclick="closePopup('confirmpublish-popup')">CANCEL</a><a href="#!" id="publishPost">PUBLISH</a></p>
+			</div>
 		</div>
 	</body>
 </html>
