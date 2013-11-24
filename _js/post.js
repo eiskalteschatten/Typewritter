@@ -57,6 +57,14 @@ function updatePreview() {
 	$('.preview').html(html);
 }
 
+function showLivePreview() {
+
+}
+
+function showMarkdownGuide() {
+
+}
+
 
 // Editor functions
 
