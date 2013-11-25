@@ -28,7 +28,7 @@
 
 .markdown-editor, .html-editor {
 	display: none;
-	height: calc(100% - 61px);
+	height: calc(100% - 30px);
 	width: 100%;
 	border: 0;
 	resize: none;
@@ -45,12 +45,15 @@
 	font-size: 13px;
 }
 
-.editor-type {
+
+/* Styles for "tab" links */
+
+.editor-type, .markdown-help {
 	position: absolute;
 	bottom: 0;
 }
 
-.editor-type a {
+.editor-type a, .markdown-help a {
 	color: #000000;
 	font-size: 12px;
 	text-decoration: none;
@@ -62,7 +65,7 @@
 	border-top: 1px solid #ffffff;
 }
 
-.editor-type a.selected {
+.editor-type a.selected, .markdown-help a.selected {
 	color: #666666;
 	border-top: 1px solid #c0c0c0;
 }
@@ -73,11 +76,6 @@
 	right: 10px;
 	text-align: right;
 	padding: 3px;
-	display: none;
-}
-
-.markdown-help, .markdown-help a {
-	font-size: 12px;
 }
 
 
@@ -90,4 +88,13 @@
 	padding: 15px;
 	position: relative;
 	overflow: auto;
+}
+
+.preview-content, .markdown-guide {
+	display: none;
+	height: calc(100% - 30px);
+	width: 100%;
+	border: 0;
+	resize: none;
+	outline: none;
 }

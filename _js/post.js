@@ -54,15 +54,23 @@ function updateHtml() {
 
 function updatePreview() {
 	var html = $('.html-editor').val();
-	$('.preview').html(html);
+	$('.preview-content').html(html);
 }
 
-function showLivePreview() {
-
+function showLivePreview(button) {
+	$('.markdown-guide').removeClass('visible');
+	$('.preview-content').addClass('visible');
+	
+	$('.markdown-help').find('a').removeClass('selected');
+	$(button).addClass('selected');
 }
 
-function showMarkdownGuide() {
-
+function showMarkdownGuide(button) {
+	$('.preview-content').removeClass('visible');
+	$('.markdown-guide').addClass('visible');
+	
+	$('.markdown-help').find('a').removeClass('selected');
+	$(button).addClass('selected');
 }
 
 
@@ -74,8 +82,6 @@ function showmarkdownEditor(button) {
 	
 	$('.editor-type').find('a').removeClass('selected');
 	$(button).addClass('selected');
-	
-	$('.markdown-help').addClass('visible');
 }
 
 function showHtmlEditor(button) {
@@ -84,6 +90,4 @@ function showHtmlEditor(button) {
 	
 	$('.editor-type').find('a').removeClass('selected');
 	$(button).addClass('selected');
-	
-	$('.markdown-help').removeClass('visible');
 }

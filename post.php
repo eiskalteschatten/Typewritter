@@ -75,12 +75,19 @@
 					<a href="#!" onclick="showmarkdownEditor(this)" class="selected">Markdown</a>
 					<a href="#!" onclick="showHtmlEditor(this)">HTML</a>
 				</div>
-				<div class="markdown-help visible">
-					<a href="#!" onclick="openPopup('markdown-popup')">Markdown Help</a>
-				</div>
-				<?php include("_includes/markdown-help.php") ?>				
 			</div>
-			<div class="preview"><?php echo $html; ?></div>
+			<div class="preview">
+				<div class="preview-content visible">
+					<?php echo $html; ?>
+				</div>
+				<div class="markdown-guide">
+					<p>For more information, see the guide at <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Daring Fireball</a>.</p>	
+				</div>
+				<div class="markdown-help">
+					<a href="#!" onclick="showMarkdownGuide(this)">Markdown Help</a>
+					<a href="#!" onclick="showLivePreview(this)" class="selected">Preview</a>
+				</div>
+			</div>
 		</div>
 		<div class="popup" id="confirmpublish-popup">
 			<div class="popup-background"></div>
