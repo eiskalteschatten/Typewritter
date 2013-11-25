@@ -41,6 +41,10 @@ a:hover {
 	display: none;
 }
 
+.align-center {
+	text-align: center;
+}
+
 
 /* Styles for the menubar */
 

@@ -8,10 +8,18 @@ function savePost(button, publish) {
 		var title = $('#postTitle').val();
 		var markdown = $('.markdown-editor').val();
 		var html = $('.html-editor').val();
-		var published = $('#published').val();
 
 		if (publish) {
 			published = 1;		
+
+			$('.draft-buttons').removeClass('visible');
+			$('.published-buttons').addClass('visible');
+		}
+		else {
+			published = 0;
+			
+			$('.published-buttons').removeClass('visible');
+			$('.draft-buttons').addClass('visible');
 		}
 
 		$.ajax({
@@ -40,6 +48,15 @@ function publish(button) {
 	$("#publishPost").click(function() {
 		savePost(button, true);
 		closePopup("confirmpublish-popup");
+	});
+}
+
+function unpublish(button) {
+	openPopup("confirmunpublish-popup");
+
+	$("#unpublishPost").click(function() {
+		savePost(button, false);
+		closePopup("confirmunpublish-popup");
 	});
 }
 

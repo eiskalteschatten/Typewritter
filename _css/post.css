@@ -1,5 +1,10 @@
 /* Style sheets for the "Create post" page */
 
+.draft-buttons, .published-buttons {
+	display: none;
+}
+
+
 /* Styles for the toolbar */
 
 .date-updated {
