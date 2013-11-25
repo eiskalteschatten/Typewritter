@@ -19,6 +19,8 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Automated install
 
 **Planning**
+- Categories
+- Tags
 - Multiple authors (login system)
 
 **Not yet started**
@@ -29,6 +31,8 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Simple, sandbox frontend
 - Search posts
 - Localization
+- Import from WordPress
+- Export
 
 The list will continue to grow as more features are added or thought of.
 
