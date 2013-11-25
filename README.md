@@ -12,9 +12,10 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 **Stable**
 - Create posts
 - Edit posts
+- Markdown to HTML converter
 
 **Development**
-- Markdown to HTML converter
+- HTML to Markdown converter
 - Automated install
 
 **Planning**
@@ -27,6 +28,7 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - File (uploads) manager
 - Simple, sandbox frontend
 - Search posts
+- Localization
 
 The list will continue to grow as more features are added or thought of.
 
@@ -35,3 +37,8 @@ Requirements
 
 - PHP 5 or higher
 - MySQL
+
+Acknowledgements
+------------
+
+- marked - a markdown parser by Christopher Jeffrey (https://github.com/chjj/marked/)
