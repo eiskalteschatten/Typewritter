@@ -16,6 +16,7 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 
 **Development**
 - HTML to Markdown converter
+- Auto-saving of drafts
 - Automated install
 
 **Planning**
@@ -32,7 +33,7 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Search posts
 - Localization
 - Import from WordPress
-- Export
+- Export data from Typewritter
 
 The list will continue to grow as more features are added or thought of.
 
