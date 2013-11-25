@@ -1,5 +1,11 @@
 // Scripts for the "Create post" page
 
+$(document).ready(function() {
+	marked.setOptions({
+		sanitize: true
+	});
+});
+
 // Saving and publishing functions
 
 function savePost(button, publish) {
@@ -64,9 +70,18 @@ function unpublish(button) {
 // Live preview functions
 
 function updateHtml() {
-
-
-	updatePreview();
+	var markdownContent = $('.markdown-editor').val();
+	
+	marked(markdownContent, function (err, content) {
+  		if (err) {
+  			throw err;
+	  		console.log(content);
+	  	}
+	  	else {
+			$('.html-editor').val(content);
+			updatePreview();
+		}
+	});
 }
 
 function updatePreview() {

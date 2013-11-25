@@ -33,7 +33,7 @@
 
 .markdown-editor, .html-editor {
 	display: none;
-	height: calc(100% - 30px);
+	height: calc(100% - 15px);
 	width: 100%;
 	border: 0;
 	resize: none;
@@ -90,16 +90,19 @@
 	float: left;
 	width: calc(50% - 32px);
 	height: 100%;
-	padding: 15px;
+	padding: 0 15px 30px 15px;
 	position: relative;
-	overflow: auto;
 }
 
 .preview-content, .markdown-guide {
 	display: none;
-	height: calc(100% - 30px);
+	height: 100%;
 	width: 100%;
 	border: 0;
-	resize: none;
-	outline: none;
+	overflow: auto;
+	position: relative;
+}
+
+.preview-content, .markdown-guide, .preview-content a, .markdown-guide a {
+	font-size: 17px;
 }

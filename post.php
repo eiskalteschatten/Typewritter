@@ -42,6 +42,7 @@
 
 		<script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="_js/typewritter.js"></script>
+		<script type="text/javascript" src="_js/marked.js"></script>
 		<script type="text/javascript" src="_js/post.js"></script>
 	</head>
 	<body>
