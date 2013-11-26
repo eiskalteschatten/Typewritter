@@ -34,8 +34,9 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Localization
 - Import from WordPress
 - Export data from Typewritter
+- Update system
 
-The list will continue to grow as more features are added or thought of.
+The list will continue to grow as more features are added or thought of. For more details, see https://github.com/eiskalteschatten/Typewritter/issues
 
 Requirements
 ------------
