@@ -58,12 +58,22 @@
 					}
 					else {
 						foreach ($posts as $post) {
+                                                        if ($post['published'] == 1) {
+                                                            $published = "Published";
+                                                        }
+                                                        else {
+                                                            $published = "Draft";
+                                                        }
+                                                    
 							echo "<tr onclick=\"openPost('".$post['id'] . "')\">";
 						
 							echo "<td class='hidden'>".$post['id'] . "</td>";
 							echo "<td class='allposts-title'>".$post['title'] . "</td>";
 							echo "<td class='allposts-markdown'>".htmlentities($post['markdown'])."</td>";
-							echo "<td class='allposts-date'>".$post['date_updated'] . "</td>";
+							echo "<td class='allposts-date'>";
+                                                        echo $post['date_updated']."<br>";
+                                                        echo "<div class='allposts-published'>".$published."</div>";
+                                                        echo "</td>";
 							echo "<td class='allposts-edit'><a href=\"post.php?id=".$post['id'] . "\">Edit</a></td>";
 
 							echo "</tr>";
