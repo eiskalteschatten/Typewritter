@@ -53,6 +53,7 @@ function publish(button) {
 	$("#publishPost").click(function() {
 		savePost(button, true);
 		closePopup("confirmpublish-popup");
+                clearInterval(autoSave);
 	});
 }
 
@@ -62,6 +63,7 @@ function unpublish(button) {
 	$("#unpublishPost").click(function() {
 		savePost(button, false);
 		closePopup("confirmunpublish-popup");
+                autoSave = setInterval(autoSavePost, autoSaveInterval);
 	});
 }
 

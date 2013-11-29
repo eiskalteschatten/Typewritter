@@ -42,6 +42,9 @@
                 
                 <script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
                 <script type="text/javascript">
+                    var autoSaveInterval = <?php echo autoSaveInterval; ?>;
+                    var autoSave = undefined;
+                    
                     $(document).ready(function() {
                             marked.setOptions({
                                     sanitize: true
@@ -49,7 +52,7 @@
                                
                             <?php
                                 if (!$published) {
-                                    echo "setInterval(autoSavePost, ".autoSaveInterval.");";
+                                    echo "autoSave = setInterval(autoSavePost, autoSaveInterval);";
                                 } 
                             ?>
                     });
