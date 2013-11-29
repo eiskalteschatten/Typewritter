@@ -1,11 +1,5 @@
 // Scripts for the "Create post" page
 
-$(document).ready(function() {
-	marked.setOptions({
-		sanitize: true
-	});
-});
-
 // Saving and publishing functions
 
 function savePost(button, publish) {
@@ -46,6 +40,11 @@ function savePost(button, publish) {
 			}
 		});	
 	});
+}
+
+function autoSavePost() {
+    var button = document.getElementById("saveDraft");
+    savePost(button, false);
 }
 
 function publish(button) {

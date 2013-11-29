@@ -13,10 +13,10 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Create posts
 - Edit posts
 - Markdown to HTML converter
+- Auto-saving of drafts
 
 **Development**
 - HTML to Markdown converter
-- Auto-saving of drafts
 - Automated install
 
 **Planning**

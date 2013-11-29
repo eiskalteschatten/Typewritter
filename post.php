@@ -36,11 +36,24 @@
 		<link rel="stylesheet" href="_css/typewritter.css" type="text/css">
 		<link rel="stylesheet" href="_css/post.css" type="text/css">
 
-        <!--[if lte IE 8]>
-            <script type="text/javascript" src="_js/ie.js"></script>
-        <![endif]-->
-
-		<script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
+                <!--[if lte IE 8]>
+                    <script type="text/javascript" src="_js/ie.js"></script>
+                <![endif]-->
+                
+                <script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                            marked.setOptions({
+                                    sanitize: true
+                            });
+                               
+                            <?php
+                                if (!$published) {
+                                    echo "setInterval(autoSavePost, ".autoSaveInterval.");";
+                                } 
+                            ?>
+                    });
+                </script>
 		<script type="text/javascript" src="_js/typewritter.js"></script>
 		<script type="text/javascript" src="_js/marked.js"></script>
 		<script type="text/javascript" src="_js/post.js"></script>
@@ -66,7 +79,7 @@
 					}
 				?>
 				<div class="draft-buttons<?php echo $draftbuttons;?>">
-					<a href="#!" onclick="savePost(this, false)">Save draft</a>
+					<a href="#!" onclick="savePost(this, false)" id="saveDraft">Save draft</a>
 					<a href="#!" onclick="publish(this)">Publish</a>
 				</div>
 				<div class="published-buttons<?php echo $publishbuttons;?>">
