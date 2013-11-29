@@ -25,4 +25,9 @@
         // Allow HTML in posts
         
         define("allowHtml", false);  // Default is false
+        
+        
+        // Set the name for the default category for new posts. This will automatically be created when installing Typewritter.
+        
+        define("defaultCategory", "General");   // Default is "General"
 ?>

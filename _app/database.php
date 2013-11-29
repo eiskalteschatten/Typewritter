@@ -11,6 +11,7 @@
 		public $postsTable = "tw_posts";
 		public $commentsTable = "tw_comments";
 		public $usersTable = "tw_users";
+                public $categoriesTable = "tw_categories";
 	
 		function __construct() {
 			try {
@@ -54,6 +55,8 @@
 							markdown TEXT, 
 							html TEXT, 
 							author INT, 
+                                                        categories TEXT, 
+                                                        tags TEXT, 
 							published BOOL, 
 							date_created DATETIME, 
 							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
@@ -77,6 +80,20 @@
 							password VARCHAR(25), 
 							date_created DATETIME, 
 							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
+                                                
+						$this->connection->query("CREATE TABLE ".$this->categoriesTable."(
+							id INT NOT NULL AUTO_INCREMENT, 
+							PRIMARY KEY(id), 
+							name TEXT, 
+							parent INT, 
+							date_created DATETIME, 
+							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
+                                                
+                                                date_default_timezone_set(timeZone);
+                                                $date = date(timeFormat);
+                                                
+                                                $this->connection->query("INSERT INTO ".$this->categoriesTable." (name, date_created, date_updated) VALUES ('".defaultCategory."', '".$date."', '".$date."')");
+
 					
 						// Fill in default options
 					
