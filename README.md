@@ -14,17 +14,18 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Edit posts
 - Markdown to HTML converter
 - Auto-saving of drafts
+- Option for allowing HTML in posts
 
 **Development**
-- HTML to Markdown converter
+- Categories
+- Tags
 - Automated install
 
 **Planning**
-- Categories
-- Tags
 - Multiple authors (login system)
 
 **Not yet started**
+- HTML to Markdown converter
 - Create comments
 - Edit comments
 - Image uploader

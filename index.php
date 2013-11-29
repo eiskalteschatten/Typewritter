@@ -29,9 +29,9 @@
 		<link rel="stylesheet" href="_css/typewritter.css" type="text/css">
 		<link rel="stylesheet" href="_css/allposts.css" type="text/css">
 
-        <!--[if lte IE 8]>
-            <script type="text/javascript" src="_js/ie.js"></script>
-        <![endif]-->
+                <!--[if lte IE 8]>
+                    <script type="text/javascript" src="_js/ie.js"></script>
+                <![endif]-->
 
 		<script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="_js/typewritter.js"></script>
@@ -62,7 +62,7 @@
 						
 							echo "<td class='hidden'>".$post['id'] . "</td>";
 							echo "<td class='allposts-title'>".$post['title'] . "</td>";
-							echo "<td class='allposts-markdown'>".$post['markdown'] . "</td>";
+							echo "<td class='allposts-markdown'>".htmlentities($post['markdown'])."</td>";
 							echo "<td class='allposts-date'>".$post['date_updated'] . "</td>";
 							echo "<td class='allposts-edit'><a href=\"post.php?id=".$post['id'] . "\">Edit</a></td>";
 

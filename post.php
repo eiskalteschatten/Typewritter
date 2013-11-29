@@ -19,8 +19,13 @@
 		
 		$title = $currPost['title'];
 		$markdown = $currPost['markdown'];
-		$html = $currPost['html'];
-		$published = $currPost['published'];
+                $html = $currPost['html'];
+                
+                if (!allowHtml) {
+                    $html = htmlentities($html);
+                }
+                
+                $published = $currPost['published'];
 		$date = $currPost['date_updated'];
 	}
 ?>
@@ -46,9 +51,13 @@
                     var autoSave = undefined;
                     
                     $(document).ready(function() {
-                            marked.setOptions({
-                                    sanitize: true
-                            });
+                            updatePreview();
+                        
+                            <?php 
+                                if (!allowHtml) {
+                                    echo "marked.setOptions({sanitize: true});";
+                                }
+                            ?>
                                
                             <?php
                                 if (!$published) {

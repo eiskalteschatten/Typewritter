@@ -20,4 +20,9 @@
         // Set the interval at which drafts will automatically save in milliseconds
         
         define("autoSaveInterval", "120000");   // Default 120000 milliseconds (2 minutes)
+        
+        
+        // Allow HTML in posts
+        
+        define("allowHtml", false);  // Default is false
 ?>
