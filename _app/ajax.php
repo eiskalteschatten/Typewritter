@@ -10,7 +10,7 @@
 	
 	
 	// Call to save drafts of posts and publish posts
-	// The only difference between saving a draft and publishing it, is the value of $published is always 1
+	// The only difference between saving a draft and publishing it, is the value of $published. 1 = publish; 0 = save as draft
 	
 	if ($_POST["action"] == "save") {
 		$id = $_POST["id"];
