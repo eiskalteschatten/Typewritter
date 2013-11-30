@@ -79,6 +79,7 @@
 					<?php include("_includes/writter-menu.php") ?>
 				</div>
 				<a href="#!" onclick="">Insert image</a>
+                                <a href="#!" onclick="showPostOptions()">Categories & Tags</a>
 				<?php 
 					$publishbuttons = "";
 					$draftbuttons = "";
@@ -120,15 +121,52 @@
 				</div>
 			</div>
 			<div class="preview">
-				<div class="preview-content visible">
-					<?php echo $html; ?>
+				<div class="post-options">
+                                    <div class="categories">
+                                        <p><b>Categories</b></p>
+                                        <div class="all-categories">
+                                            <?php
+                                                $category = new Category();
+                                                $allCategories = $category->getAllCategories();
+
+                                                foreach ($allCategories as $cat) {
+                                                    echo "<div class='category-checkbox'>";
+                                                    echo "<input type='checkbox' name='category' value='".$cat[id]."'>".$cat[name];
+                                                    echo "</div>";
+                                                }
+                                            ?>
+                                        </div>
+                                        <div class="new-category">
+                                            <b>Create a new category</b><br><br>
+                                            <input type="text" placeholder="New Category" id="newCategory"><br><br>
+                                            <select id="newCategoryParent">
+                                                <option selected value="0">Select a parent category</option>
+                                                <?php
+                                                    foreach ($allCategories as $cat) {
+                                                        echo "<option value='".$cat[id]."'>";
+                                                        echo $cat[name];
+                                                        echo "</option>";
+                                                    }
+                                                ?>
+                                            </select><br><br>
+                                            <button onclick="createCategory()">Create new category</button>
+                                        </div>
+                                    </div>
+                                    <div class="tags">
+                                        <p><b>Tags</b></p>
+                                        <textarea class="tags-input" placeholder="Type your comma-separated tags here"></textarea>
+                                    </div>
 				</div>
 				<div class="markdown-guide">
 					<p>For more information, see the guide at <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Daring Fireball</a>.</p>	
 				</div>
+				<div class="preview-content visible">
+					<?php echo $html; ?>
+				</div>
 				<div class="markdown-help">
-					<a href="#!" onclick="showMarkdownGuide(this)">Markdown Help</a>
-					<a href="#!" onclick="showLivePreview(this)" class="selected">Preview</a>
+                                    <a href="#!" onclick="showPostOptions()" id="postOptions">Post Options</a>
+                                    <a href="#!" onclick="showMarkdownGuide(this)">Markdown Help</a>
+                                    <a href="#!" onclick="showLivePreview(this)" class="selected">Preview</a>
 				</div>
 			</div>
 		</div>

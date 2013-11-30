@@ -212,6 +212,24 @@
 				die($e);
 			}
 		}
+                
+                function createCategory($name, $parent) {
+			try {
+                                // Get the current date and time
+                                $date = $this->getTimeDate();
+                            
+				// Insert into the category table using prepared statements to avoid MySQL injections.
+				$stmt = $this->connection->prepare("INSERT INTO ".$this->categoriesTable." (name, parent, date_created, date_updated) VALUES (?, ?, ?, ?)");
+ 				$stmt->bind_param('siss', $name, $parent, $date, $date);
+ 				$result = $stmt->execute();
+                                $stmt->close();
+
+				return $result;
+			}
+			catch(Exception $e) {
+				die($e);
+			}
+                }
 		
 		function countFromTable($table) {
 			try {

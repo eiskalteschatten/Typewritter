@@ -68,6 +68,25 @@ function unpublish(button) {
 }
 
 
+// Editor functions
+
+function showmarkdownEditor(button) {
+	$('.html-editor').removeClass('visible');
+	$('.markdown-editor').addClass('visible');
+	
+	$('.editor-type').find('a').removeClass('selected');
+	$(button).addClass('selected');
+}
+
+function showHtmlEditor(button) {
+	$('.markdown-editor').removeClass('visible');
+	$('.html-editor').addClass('visible');
+	
+	$('.editor-type').find('a').removeClass('selected');
+	$(button).addClass('selected');
+}
+
+
 // Live preview functions
 
 function updateHtml() {
@@ -90,37 +109,78 @@ function updatePreview() {
 	$('.preview-content').html(html);
 }
 
+
+// Functions for the right panel
+
 function showLivePreview(button) {
-	$('.markdown-guide').removeClass('visible');
+	closeAllRight();
 	$('.preview-content').addClass('visible');
 	
-	$('.markdown-help').find('a').removeClass('selected');
 	$(button).addClass('selected');
 }
 
 function showMarkdownGuide(button) {
-	$('.preview-content').removeClass('visible');
+	closeAllRight();
 	$('.markdown-guide').addClass('visible');
 	
-	$('.markdown-help').find('a').removeClass('selected');
 	$(button).addClass('selected');
 }
 
-
-// Editor functions
-
-function showmarkdownEditor(button) {
-	$('.html-editor').removeClass('visible');
-	$('.markdown-editor').addClass('visible');
+function showPostOptions() {
+	closeAllRight();
+	$('.post-options').addClass('visible');
 	
-	$('.editor-type').find('a').removeClass('selected');
-	$(button).addClass('selected');
+	$('#postOptions').addClass('selected');
 }
 
-function showHtmlEditor(button) {
-	$('.markdown-editor').removeClass('visible');
-	$('.html-editor').addClass('visible');
-	
-	$('.editor-type').find('a').removeClass('selected');
-	$(button).addClass('selected');
+function closeAllRight() {
+    $('.preview-content').removeClass('visible');
+    $('.markdown-guide').removeClass('visible');
+    $('.post-options').removeClass('visible');
+    
+    $('.markdown-help').find('a').removeClass('selected');
+}
+
+
+// Category functions
+
+function createCategory() {
+    var name = $('#newCategory').val();
+    var parent = $('#newCategoryParent').val();
+    
+    $.ajax({
+        url: '_app/ajax.php',
+        data: {action: 'create-category', name: name, parent: parent},
+        type: 'post',
+        success: function(msg) {
+            if (msg == true) {
+                updateCategories();
+            }
+            else {
+                alert("Something went wrong while creating a new category! Please try again.");
+            }
+        },
+        error: function(msg) {
+            alert("Something went wrong while creating a new category! Please try again.\n\n"+msg);
+        }
+    });
+}
+
+function updateCategories() {
+    $.ajax({
+        url: '_app/ajax.php',
+        data: {action: 'update-categories'},
+        type: 'post',
+        success: function(msg) {
+            if (msg) {
+                $('.all-categories').html(msg);
+            }
+            else {
+                alert("Something went wrong while creating a new category! Please try again.");
+            }
+        },
+        error: function(msg) {
+            alert("Something went wrong while creating a new category! Please try again.\n\n"+msg);
+        }
+    });
 }

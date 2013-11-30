@@ -95,7 +95,7 @@
 	position: relative;
 }
 
-.preview-content, .markdown-guide {
+.preview-content, .markdown-guide, .post-options {
 	display: none;
 	height: 100%;
 	width: 100%;
@@ -104,6 +104,49 @@
 	position: relative;
 }
 
-.preview-content, .markdown-guide, .preview-content a, .markdown-guide a {
+.preview-content, .markdown-guide, .preview-content a, .markdown-guide a, .post-options, .post-options a {
 	font-size: 17px;
+}
+
+
+/* Styles for Post Options tab */
+
+.categories, .tags {
+    float: left;
+    width: calc(50% - 20px);
+    padding-right: 20px;
+}
+
+.all-categories {
+    max-height: 225px;
+    width: calc(100% - 10px);
+    position: relative;
+    overflow: auto;
+    margin-bottom: 20px;
+    border: 1px solid #B7B7B7;
+    padding: 10px 5px;
+}
+
+.new-category {
+    border: 1px solid #B7B7B7;
+    font-size: 13px;
+    padding: 10px;
+}
+
+.new-category input[type="text"], .new-category select {
+    width: calc(100% - 20px);
+}
+
+.categories input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.categories .category-checkbox {
+    font-size: 13px;
+}
+
+.tags .tags-input {
+    min-height: 125px;
+    padding: 10px;
+    width: calc(100% - 20px);
 }

@@ -45,6 +45,18 @@ a:hover {
 	text-align: center;
 }
 
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear-both {
+    clear: both;
+}
+
 
 /* Styles for the menubar */
 
