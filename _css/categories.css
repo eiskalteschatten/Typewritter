@@ -1,0 +1,10 @@
+/* Style sheets for the "Edit categories" page */
+
+.new-parent-category {
+    float: right;
+    margin-top: -5px;
+}
+
+.new-parent-category select {
+    min-width: 300px;
+}
