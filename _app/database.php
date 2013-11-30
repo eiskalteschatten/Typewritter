@@ -58,7 +58,8 @@
                                                         categories TEXT, 
                                                         tags TEXT, 
 							published BOOL, 
-							date_created DATETIME, 
+                                                        publication_date DATETIME, 
+                                                        date_created DATETIME, 
 							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
 						
 						$this->connection->query("CREATE TABLE ".$this->commentsTable."(

@@ -23,6 +23,7 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 
 **Planning**
 - Multiple authors (login system)
+- Schedule post publication
 
 **Not yet started**
 - HTML to Markdown converter
