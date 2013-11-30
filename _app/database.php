@@ -90,8 +90,8 @@
 							date_created DATETIME, 
 							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
                                                 
-                                                date_default_timezone_set(timeZone);
-                                                $date = date(timeFormat);
+                                                // Get the current date and time
+                                                $date = $this->getTimeDate();
                                                 
                                                 $this->connection->query("INSERT INTO ".$this->categoriesTable." (name, date_created, date_updated) VALUES ('".defaultCategory."', '".$date."', '".$date."')");
 
@@ -179,8 +179,11 @@
 			}
 		}
 
-		function insertIntoPost($title, $markdown, $html, $author, $published, $date) {
+		function insertIntoPost($title, $markdown, $html, $author, $published) {
 			try {
+                                // Get the current date and time
+                                $date = $this->getTimeDate();
+                            
 				// Insert into the posts table using prepared statements to avoid MySQL injections.
 				$stmt = $this->connection->prepare("INSERT INTO ".$this->postsTable." (title, markdown, html, author, published, date_created, date_updated) VALUES (?, ?, ?, ?, ?, ?, ?)");
  				$stmt->bind_param('sssiiss', $title, $markdown, $html, $author, $published, $date, $date);
@@ -194,8 +197,11 @@
 			}
 		}
 
-		function updatePost($title, $markdown, $html, $author, $published, $date, $id) {
+		function updatePost($title, $markdown, $html, $author, $published, $id) {
 			try {
+                                // Get the current date and time
+                                $date = $this->getTimeDate();
+                            
 				// Update the posts table using prepared statements to avoid MySQL injections.
 				$stmt = $this->connection->prepare("UPDATE ".$this->postsTable." SET title = ?, markdown = ?, html = ?, author = ?, published = ?, date_updated = ? where id = ?");
  				$stmt->bind_param('sssiisi', $title, $markdown, $html, $author, $published, $date, $id);
@@ -217,5 +223,11 @@
 				die($e);
 			}
 		}
+                
+                function getTimeDate() {
+                    // Set timezone and return today's date
+                    date_default_timezone_set(timeZone);
+                    return date(timeFormat);
+                }
 	}
 ?>
