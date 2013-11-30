@@ -25,10 +25,6 @@
 			//$author = $this->getAuthor();
 			//$author->getId();
 		
-			// Set timezone and get today's date
-			date_default_timezone_set(timeZone);
-			$date = date(timeFormat);
-			
 			if (!$published || $published == "") {
 				// Automatically set published to false when saving if it hasn't been published already
 				$published = 0;
@@ -36,11 +32,11 @@
 			
 			if ($this->getId() != "") {
 				// Update the post if an ID already exists
-				$this->database->updatePost($title, $markdown, $html, 1, $published, $date, $this->getId());
+				$this->database->updatePost($title, $markdown, $html, 1, $published, $this->getId());
 			}
 			else {
 				// If an ID does not exist, insert the post into the database. The function returns the new ID.
-				$id = $this->database->insertIntoPost($title, $markdown, $html, 1, $published, $date);
+				$id = $this->database->insertIntoPost($title, $markdown, $html, 1, $published);
 				
 				// Set the new post ID.
 				$this->setId($id);
