@@ -19,6 +19,7 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 **Development**
 - Categories
 - Tags
+- Delete posts
 - Automated install
 
 **Planning**
