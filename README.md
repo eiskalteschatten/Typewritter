@@ -27,6 +27,7 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 
 **Not yet started**
 - HTML to Markdown converter
+- Live word count indicator
 - Create comments
 - Edit comments
 - Image uploader
