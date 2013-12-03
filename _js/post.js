@@ -47,6 +47,10 @@ function autoSavePost() {
     savePost(button, false);
 }
 
+function deletePost() {
+    
+}
+
 function publish(button) {
 	openPopup("confirmpublish-popup");
 

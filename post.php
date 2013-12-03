@@ -80,6 +80,7 @@
 				</div>
 				<a href="#!" onclick="">Insert image</a>
                                 <a href="#!" onclick="showPostOptions()">Categories & Tags</a>
+                                <a href="#!" onclick="deletePost()">Delete post</a>
 				<?php 
 					$publishbuttons = "";
 					$draftbuttons = "";
