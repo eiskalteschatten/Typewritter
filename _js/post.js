@@ -48,7 +48,26 @@ function autoSavePost() {
 }
 
 function deletePost() {
+    closePopup("confirmdelete-popup");
     
+    var id = $('#postId').val();
+    
+    $('#deletePost').stop().animate({opacity: 0}, 200, function() {
+        $.ajax({
+                url: '_app/ajax.php',
+                data: {action: 'delete-post', id: id},
+                type: 'post',
+                success: function(msg) {
+                    $('#deletePost').stop().animate({opacity: 1}, 200, function() {
+                        window.location.href = "index.php";
+                    });
+                },
+                error: function(msg) {
+                    alert("An error has occurred!\n\n"+msg);	
+                    $('#deletePost').stop().animate({opacity: 1}, 200);	
+                }
+        });
+    });
 }
 
 function publish(button) {

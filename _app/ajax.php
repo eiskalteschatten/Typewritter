@@ -28,6 +28,15 @@
 		echo json_encode($return);
 	}
         
+        
+        // Call to delete a post
+        
+	if ($_POST["action"] == "delete-post") {
+            $id = $_POST["id"];
+            $post = new Post($id);
+            echo $post->delete();
+        }
+        
 
 	// Call to create a new category
 	

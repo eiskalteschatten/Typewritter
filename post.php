@@ -80,7 +80,7 @@
 				</div>
 				<a href="#!" onclick="">Insert image</a>
                                 <a href="#!" onclick="showPostOptions()">Categories & Tags</a>
-                                <a href="#!" onclick="deletePost()">Delete post</a>
+                                <a href="#!" onclick="openPopup('confirmdelete-popup')" id="deletePost">Delete post</a>
 				<?php 
 					$publishbuttons = "";
 					$draftbuttons = "";
@@ -183,6 +183,13 @@
 			<div class="popup-content align-center">
 				<p>Are you sure you want to return your post to a draft status?<br>It will no longer be visible on your blog.</p>
 				<p class="close"><a href="#!" onclick="closePopup('confirmunpublish-popup')">CANCEL</a><a href="#!" id="unpublishPost">RETURN TO DRAFT</a></p>
+			</div>
+		</div>
+		<div class="popup" id="confirmdelete-popup">
+			<div class="popup-background"></div>
+			<div class="popup-content align-center">
+				<p>Are you sure you want to delete this post?</p>
+				<p class="close"><a href="#!" onclick="closePopup('confirmdelete-popup')">CANCEL</a><a href="#!" onclick="deletePost()">DELETE</a></p>
 			</div>
 		</div>
 	</body>

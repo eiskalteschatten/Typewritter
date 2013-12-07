@@ -213,6 +213,11 @@
 			}
 		}
                 
+                function deleteRowFromTable($table, $key) {
+                        // Delete a row from a table
+                        return $this->connection->query("DELETE FROM ".$table." where id = ".$key) or die("An error has occured! ".mysqli_error());
+                }
+                
                 function createCategory($name, $parent) {
 			try {
                                 // Get the current date and time

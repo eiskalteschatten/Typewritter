@@ -48,6 +48,12 @@
 			$table = $this->database->postsTable;
 			return $this->database->selectAllFromRow($table, $this->getId());
 		}
+                
+                function delete() {
+                        // Delete post
+                        $table = $this->database->postsTable;
+                        return $this->database->deleteRowFromTable($table, $this->getId());
+                }
 		
 		function getId() {
 			return $this->id;

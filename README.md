@@ -15,11 +15,11 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Markdown to HTML converter
 - Auto-saving of drafts
 - Option for allowing HTML in posts
+- Delete posts
 
 **Development**
 - Categories
 - Tags
-- Delete posts
 - Automated install
 
 **Planning**
