@@ -1,7 +1,7 @@
 Typewritter
 ===========
 
-Typewritter aims to be an easy-to-use backend for blogs that web developers can seemlessly implement into their existing web sites without having the hassle of editing complicated themes.
+Typewritter aims to be an easy-to-use backend for blogs that web developers can seamlessly implement into their existing websites without having the hassle of editing complicated themes.
 
 
 Progress
