@@ -32,17 +32,17 @@
         // Call to delete a post
         
 	if ($_POST["action"] == "delete-post") {
-            $id = $_POST["id"];
-            $post = new Post($id);
-            echo $post->delete();
-        }
+		$id = $_POST["id"];
+		$post = new Post($id);
+		echo $post->delete();
+	}
         
 
 	// Call to create a new category
 	
 	if ($_POST["action"] == "create-category") {
-                $name = $_POST["name"];
-                $parent = $_POST["parent"];
+		$name = $_POST["name"];
+		$parent = $_POST["parent"];
             
 		$category = new Category();
 		echo $category->createCategory($name, $parent);
@@ -52,16 +52,16 @@
 	// Call to update categories
 	
 	if ($_POST["action"] == "update-categories") {
-            $results = "";
-            $category = new Category();
-            $allCategories = $category->getAllCategories();
-            
-            foreach ($allCategories as $cat) {
-                $results .= "<div class='category-checkbox'>";
-                $results .= "<input type='checkbox' name='category' value='".$cat[id]."'>".$cat[name];
-                $results .= "</div>";
-            }
-            
-            echo $results;
+		$results = "";
+		$category = new Category();
+		$allCategories = $category->getAllCategories();
+		
+		foreach ($allCategories as $cat) {
+			$results .= "<div class='category-checkbox'>";
+			$results .= "<input type='checkbox' name='category' value='".$cat[id]."'>".$cat[name];
+			$results .= "</div>";
+		}
+		
+		echo $results;
 	}
 ?>

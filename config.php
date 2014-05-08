@@ -17,17 +17,17 @@
 	define("timeFormat", "Y-m-d H:i:s");    // See http://us1.php.net/manual/en/function.date.php for more information about PHP date formats
         
         
-        // Set the interval at which drafts will automatically save in milliseconds
-        
-        define("autoSaveInterval", "120000");   // Default 120000 milliseconds (2 minutes)
-        
-        
-        // Allow HTML in posts
-        
-        define("allowHtml", false);  // Default is false
-        
-        
-        // Set the name for the default category for new posts. This will automatically be created when installing Typewritter.
-        
-        define("defaultCategory", "General");   // Default is "General"
+	// Set the interval at which drafts will automatically save in milliseconds
+	
+	define("autoSaveInterval", "120000");   // Default 120000 milliseconds (2 minutes)
+	
+	
+	// Allow HTML in posts
+	
+	define("allowHtml", false);  // Default is false
+	
+	
+	// Set the name for the default category for new posts. This will automatically be created when installing Typewritter.
+	
+	define("defaultCategory", "General");   // Default is "General"
 ?>

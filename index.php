@@ -29,9 +29,9 @@
 		<link rel="stylesheet" href="_css/typewritter.css" type="text/css">
 		<link rel="stylesheet" href="_css/allposts.css" type="text/css">
 
-                <!--[if lte IE 8]>
-                    <script type="text/javascript" src="_js/ie.js"></script>
-                <![endif]-->
+		<!--[if lte IE 8]>
+			<script type="text/javascript" src="_js/ie.js"></script>
+		<![endif]-->
 
 		<script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="_js/typewritter.js"></script>
@@ -44,7 +44,7 @@
 				<a href="post.php">Create post</a>
 				<a href="files.php">Manage files</a>
 				<a href="comments.php">Comments</a>
-                                <a href="categories.php">Categories</a>
+				<a href="categories.php">Categories</a>
 			</div>
 			<?php include("_includes/settings-menu.php") ?>
 		</div>
@@ -59,12 +59,12 @@
 					}
 					else {
 						foreach ($posts as $post) {
-                                                        if ($post['published'] == 1) {
-                                                            $published = "Published";
-                                                        }
-                                                        else {
-                                                            $published = "Draft";
-                                                        }
+							if ($post['published'] == 1) {
+								$published = "Published";
+							}
+							else {
+								$published = "Draft";
+							}
                                                     
 							echo "<tr onclick=\"openPost('".$post['id'] . "')\">";
 						
@@ -72,9 +72,9 @@
 							echo "<td class='allposts-title'>".$post['title'] . "</td>";
 							echo "<td class='allposts-markdown'>".htmlentities($post['markdown'])."</td>";
 							echo "<td class='allposts-date'>";
-                                                        echo $post['date_updated']."<br>";
-                                                        echo "<div class='allposts-published'>".$published."</div>";
-                                                        echo "</td>";
+							echo $post['date_updated']."<br>";
+							echo "<div class='allposts-published'>".$published."</div>";
+							echo "</td>";
 							echo "<td class='allposts-edit'><a href=\"post.php?id=".$post['id'] . "\">Edit</a></td>";
 
 							echo "</tr>";

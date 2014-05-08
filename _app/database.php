@@ -11,7 +11,7 @@
 		public $postsTable = "tw_posts";
 		public $commentsTable = "tw_comments";
 		public $usersTable = "tw_users";
-                public $categoriesTable = "tw_categories";
+		public $categoriesTable = "tw_categories";
 	
 		function __construct() {
 			try {
@@ -55,12 +55,12 @@
 							markdown TEXT, 
 							html TEXT, 
 							author INT, 
-                                                        categories TEXT, 
-                                                        tags TEXT, 
+							categories TEXT, 
+							tags TEXT, 
 							published BOOL, 
-                                                        publication_date DATETIME, 
-                                                        date_created DATETIME, 
-                                                        date_published DATETIME, 
+							publication_date DATETIME, 
+							date_created DATETIME, 
+							date_published DATETIME, 
 							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
 						
 						$this->connection->query("CREATE TABLE ".$this->commentsTable."(
@@ -91,10 +91,10 @@
 							date_created DATETIME, 
 							date_updated DATETIME)") or die("An error has occured! ".mysqli_error());
                                                 
-                                                // Get the current date and time
-                                                $date = $this->getTimeDate();
-                                                
-                                                $this->connection->query("INSERT INTO ".$this->categoriesTable." (name, date_created, date_updated) VALUES ('".defaultCategory."', '".$date."', '".$date."')");
+							// Get the current date and time
+							$date = $this->getTimeDate();
+							
+							$this->connection->query("INSERT INTO ".$this->categoriesTable." (name, date_created, date_updated) VALUES ('".defaultCategory."', '".$date."', '".$date."')");
 
 					
 						// Fill in default options
@@ -182,8 +182,8 @@
 
 		function insertIntoPost($title, $markdown, $html, $author, $published) {
 			try {
-                                // Get the current date and time
-                                $date = $this->getTimeDate();
+				// Get the current date and time
+				$date = $this->getTimeDate();
                             
 				// Insert into the posts table using prepared statements to avoid MySQL injections.
 				$stmt = $this->connection->prepare("INSERT INTO ".$this->postsTable." (title, markdown, html, author, published, date_created, date_updated) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -200,8 +200,8 @@
 
 		function updatePost($title, $markdown, $html, $author, $published, $id) {
 			try {
-                                // Get the current date and time
-                                $date = $this->getTimeDate();
+				// Get the current date and time
+				$date = $this->getTimeDate();
                             
 				// Update the posts table using prepared statements to avoid MySQL injections.
 				$stmt = $this->connection->prepare("UPDATE ".$this->postsTable." SET title = ?, markdown = ?, html = ?, author = ?, published = ?, date_updated = ? where id = ?");
@@ -214,28 +214,28 @@
 			}
 		}
                 
-                function deleteRowFromTable($table, $key) {
-                        // Delete a row from a table
-                        return $this->connection->query("DELETE FROM ".$table." where id = ".$key) or die("An error has occured! ".mysqli_error());
-                }
-                
-                function createCategory($name, $parent) {
+		function deleteRowFromTable($table, $key) {
+				// Delete a row from a table
+				return $this->connection->query("DELETE FROM ".$table." where id = ".$key) or die("An error has occured! ".mysqli_error());
+		}
+		
+		function createCategory($name, $parent) {
 			try {
-                                // Get the current date and time
-                                $date = $this->getTimeDate();
+				// Get the current date and time
+				$date = $this->getTimeDate();
                             
 				// Insert into the category table using prepared statements to avoid MySQL injections.
 				$stmt = $this->connection->prepare("INSERT INTO ".$this->categoriesTable." (name, parent, date_created, date_updated) VALUES (?, ?, ?, ?)");
  				$stmt->bind_param('siss', $name, $parent, $date, $date);
  				$result = $stmt->execute();
-                                $stmt->close();
+				$stmt->close();
 
 				return $result;
 			}
 			catch(Exception $e) {
 				die($e);
 			}
-                }
+		}
 		
 		function countFromTable($table) {
 			try {
@@ -248,10 +248,10 @@
 			}
 		}
                 
-                function getTimeDate() {
-                    // Set timezone and return today's date
-                    date_default_timezone_set(timeZone);
-                    return date(timeFormat);
-                }
+		function getTimeDate() {
+			// Set timezone and return today's date
+			date_default_timezone_set(timeZone);
+			return date(timeFormat);
+		}
 	}
 ?>

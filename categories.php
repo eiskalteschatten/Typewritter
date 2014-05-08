@@ -1,8 +1,8 @@
 <?php
 	require_once("typewritter.php"); 
         
-        $category = new Category();
-        $allCategories = $category->getAllCategories();
+	$category = new Category();
+	$allCategories = $category->getAllCategories();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -16,9 +16,9 @@
 		<link rel="stylesheet" href="_css/typewritter.css" type="text/css">
 		<link rel="stylesheet" href="_css/categories.css" type="text/css">
 
-                <!--[if lte IE 8]>
-                    <script type="text/javascript" src="_js/ie.js"></script>
-                <![endif]-->
+		<!--[if lte IE 8]>
+			<script type="text/javascript" src="_js/ie.js"></script>
+		<![endif]-->
                 
                 <script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="_js/typewritter.js"></script>
@@ -33,26 +33,25 @@
 					<?php include("_includes/writter-menu.php") ?>
 				</div>
 				<a href="#!" onclick="">Insert image</a>
-
 			</div>
 			<?php include("_includes/settings-menu.php") ?>
 		</div>
 		<div class="content with-toolbar">
 			<div class="toolbar">
 				<div class="new-parent-category">
-                                    <select id="newCategoryParent">
-                                        <option selected value="0">Select a parent category</option>
-                                        <?php
-                                            foreach ($allCategories as $cat) {
-                                                echo "<option value='".$cat[id]."'>";
-                                                echo $cat[name];
-                                                echo "</option>";
-                                            }
-                                        ?>
-                                    </select>
-                                    <button onclick="createCategory()">Create new category</button>
+					<select id="newCategoryParent">
+						<option selected value="0">Select a parent category</option>
+						<?php
+							foreach ($allCategories as $cat) {
+								echo "<option value='".$cat[id]."'>";
+								echo $cat[name];
+								echo "</option>";
+							}
+						?>
+					</select>
+					<button onclick="createCategory()">Create new category</button>
 				</div>
-                                <input type="text" id="newCategory" placeholder="New category">
+				<input type="text" id="newCategory" placeholder="New category">
 			</div>
 			<table class="allposts">
 				<?php
@@ -75,6 +74,6 @@
 					}
 				?>
 			</table>
-                </div>
+		</div>
 	</body>
 </html>

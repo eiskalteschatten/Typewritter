@@ -19,13 +19,13 @@
 		
 		$title = $currPost['title'];
 		$markdown = $currPost['markdown'];
-                $html = $currPost['html'];
-                
-                if (!allowHtml) {
-                    $html = htmlentities($html);
-                }
-                
-                $published = $currPost['published'];
+		$html = $currPost['html'];
+	
+		if (!allowHtml) {
+			$html = htmlentities($html);
+		}
+	
+		$published = $currPost['published'];
 		$date = $currPost['date_updated'];
 	}
 ?>
@@ -41,31 +41,31 @@
 		<link rel="stylesheet" href="_css/typewritter.css" type="text/css">
 		<link rel="stylesheet" href="_css/post.css" type="text/css">
 
-                <!--[if lte IE 8]>
-                    <script type="text/javascript" src="_js/ie.js"></script>
-                <![endif]-->
-                
-                <script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
-                <script type="text/javascript">
-                    var autoSaveInterval = <?php echo autoSaveInterval; ?>;
-                    var autoSave = undefined;
-                    
-                    $(document).ready(function() {
-                            updatePreview();
-                        
-                            <?php 
-                                if (!allowHtml) {
-                                    echo "marked.setOptions({sanitize: true});";
-                                }
-                            ?>
-                               
-                            <?php
-                                if (!$published) {
-                                    echo "autoSave = setInterval(autoSavePost, autoSaveInterval);";
-                                } 
-                            ?>
-                    });
-                </script>
+		<!--[if lte IE 8]>
+			<script type="text/javascript" src="_js/ie.js"></script>
+		<![endif]-->
+		
+		<script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript">
+			var autoSaveInterval = <?php echo autoSaveInterval; ?>;
+			var autoSave = undefined;
+			
+			$(document).ready(function() {
+				updatePreview();
+			
+				<?php 
+					if (!allowHtml) {
+						echo "marked.setOptions({sanitize: true});";
+					}
+				?>
+				   
+				<?php
+					if (!$published) {
+						echo "autoSave = setInterval(autoSavePost, autoSaveInterval);";
+					} 
+				?>
+			});
+		</script>
 		<script type="text/javascript" src="_js/typewritter.js"></script>
 		<script type="text/javascript" src="_js/marked.js"></script>
 		<script type="text/javascript" src="_js/post.js"></script>
@@ -79,8 +79,8 @@
 					<?php include("_includes/writter-menu.php") ?>
 				</div>
 				<a href="#!" onclick="">Insert image</a>
-                                <a href="#!" onclick="showPostOptions()">Categories & Tags</a>
-                                <a href="#!" onclick="openPopup('confirmdelete-popup')" id="deletePost">Delete post</a>
+				<a href="#!" onclick="showPostOptions()">Categories & Tags</a>
+				<a href="#!" onclick="openPopup('confirmdelete-popup')" id="deletePost">Delete post</a>
 				<?php 
 					$publishbuttons = "";
 					$draftbuttons = "";
@@ -123,40 +123,40 @@
 			</div>
 			<div class="preview">
 				<div class="post-options">
-                                    <div class="categories">
-                                        <p><b>Categories</b></p>
-                                        <div class="all-categories">
-                                            <?php
-                                                $category = new Category();
-                                                $allCategories = $category->getAllCategories();
+					<div class="categories">
+						<p><b>Categories</b></p>
+						<div class="all-categories">
+							<?php
+								$category = new Category();
+								$allCategories = $category->getAllCategories();
 
-                                                foreach ($allCategories as $cat) {
-                                                    echo "<div class='category-checkbox'>";
-                                                    echo "<input type='checkbox' name='category' value='".$cat[id]."'>".$cat[name];
-                                                    echo "</div>";
-                                                }
-                                            ?>
-                                        </div>
-                                        <div class="new-category">
-                                            <b>Create a new category</b><br><br>
-                                            <input type="text" placeholder="New Category" id="newCategory"><br><br>
-                                            <select id="newCategoryParent">
-                                                <option selected value="0">Select a parent category</option>
-                                                <?php
-                                                    foreach ($allCategories as $cat) {
-                                                        echo "<option value='".$cat[id]."'>";
-                                                        echo $cat[name];
-                                                        echo "</option>";
-                                                    }
-                                                ?>
-                                            </select><br><br>
-                                            <button onclick="createCategory()">Create new category</button>
-                                        </div>
-                                    </div>
-                                    <div class="tags">
-                                        <p><b>Tags</b></p>
-                                        <textarea class="tags-input" placeholder="Type your comma-separated tags here"></textarea>
-                                    </div>
+								foreach ($allCategories as $cat) {
+									echo "<div class='category-checkbox'>";
+									echo "<input type='checkbox' name='category' value='".$cat[id]."'>".$cat[name];
+									echo "</div>";
+								}
+							?>
+						</div>
+						<div class="new-category">
+							<b>Create a new category</b><br><br>
+							<input type="text" placeholder="New Category" id="newCategory"><br><br>
+							<select id="newCategoryParent">
+								<option selected value="0">Select a parent category</option>
+								<?php
+									foreach ($allCategories as $cat) {
+										echo "<option value='".$cat[id]."'>";
+										echo $cat[name];
+										echo "</option>";
+									}
+								?>
+							</select><br><br>
+							<button onclick="createCategory()">Create new category</button>
+						</div>
+					</div>
+					<div class="tags">
+						<p><b>Tags</b></p>
+						<textarea class="tags-input" placeholder="Type your comma-separated tags here"></textarea>
+					</div>
 				</div>
 				<div class="markdown-guide">
 					<p>For more information, see the guide at <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Daring Fireball</a>.</p>	
@@ -165,9 +165,9 @@
 					<?php echo $html; ?>
 				</div>
 				<div class="markdown-help">
-                                    <a href="#!" onclick="showPostOptions()" id="postOptions">Post Options</a>
-                                    <a href="#!" onclick="showMarkdownGuide(this)">Markdown Help</a>
-                                    <a href="#!" onclick="showLivePreview(this)" class="selected">Preview</a>
+					<a href="#!" onclick="showPostOptions()" id="postOptions">Post Options</a>
+					<a href="#!" onclick="showMarkdownGuide(this)">Markdown Help</a>
+					<a href="#!" onclick="showLivePreview(this)" class="selected">Preview</a>
 				</div>
 			</div>
 		</div>
