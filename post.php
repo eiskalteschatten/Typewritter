@@ -56,6 +56,7 @@
 			var autoSave = undefined;
 			
 			$(document).ready(function() {
+				updateWordCount();
 				updatePreview();
 			
 				<?php 
@@ -119,8 +120,9 @@
 			<div class="editor">
 				<input type="hidden" value="<?php echo $id; ?>" id="postId">
 				<input type="hidden" value="<?php echo $published; ?>" id="published">
-				<textarea class="markdown-editor visible" onkeyup="updateHtml()" placeholder="Post content"><?php echo $markdown; ?></textarea>
+				<textarea class="markdown-editor visible" onkeyup="updateTyping()" placeholder="Post content"><?php echo $markdown; ?></textarea>
 				<textarea class="html-editor" readonly placeholder="Automatically generated HTML"><?php echo $html; ?></textarea>
+				<div class="word-count"><span class="count">0</span> Words</div>
 				<div class="editor-type">
 					<a href="#!" onclick="showmarkdownEditor(this)" class="selected">Markdown</a>
 					<a href="#!" onclick="showHtmlEditor(this)">HTML</a>

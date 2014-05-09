@@ -124,6 +124,27 @@ function showHtmlEditor(button) {
 
 // Live preview functions
 
+function updateTyping() {
+	updateWordCount();
+	updateHtml();
+}
+
+function updateWordCount() {
+	var markdownContent = $('.markdown-editor').val();
+	var contentArray = markdownContent.split(" ");
+	var size = contentArray.length;
+	
+	for (var i = 0; i < size; i++) {
+		if (contentArray[i] == "") {
+			contentArray.remove(i);
+		}
+	}
+
+	size = contentArray.length;
+	
+	$('.word-count').find('.count').text(size);
+}
+
 function updateHtml() {
 	var markdownContent = $('.markdown-editor').val();
 	

@@ -48,7 +48,14 @@
 .html-editor {
 	font-family: Courier, serif;
 	font-size: 13px;
-        color: #a0a0a0;
+    color: #a0a0a0;
+}
+
+.word-count {
+	float: right;
+	font-size: 12px;
+	padding-top: 3px;
+	color: #707070;
 }
 
 

@@ -18,15 +18,15 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Delete posts
 - Categories
 - Tags
+- Live word count indicator
 
 **Development**
 - Automated install
-- Live word count indicator
 - Image uploader
+- Multiple authors (login system)
 
 **Planning**
 - Schedule post publication
-- Multiple authors (login system)
 - Create comments
 - Edit comments
 
