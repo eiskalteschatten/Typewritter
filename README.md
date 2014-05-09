@@ -22,17 +22,17 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 **Development**
 - Automated install
 - Live word count indicator
-- Multiple authors (login system)
+- Image uploader
 
 **Planning**
 - Schedule post publication
-- Image uploader
-- File (uploads) manager
-
-**Not yet started**
-- HTML to Markdown converter
+- Multiple authors (login system)
 - Create comments
 - Edit comments
+
+**Not yet started**
+- File (uploads) manager
+- HTML to Markdown converter
 - Simple, sandbox frontend
 - Search posts
 - Localization
