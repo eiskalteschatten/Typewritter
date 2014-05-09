@@ -32,7 +32,6 @@
 					<a href="index.php" class="mainlink">Writter &rarr;</a>
 					<?php include("_includes/writter-menu.php") ?>
 				</div>
-				<a href="#!" onclick="">Insert image</a>
 			</div>
 			<?php include("_includes/settings-menu.php") ?>
 		</div>

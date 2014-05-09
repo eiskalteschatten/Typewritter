@@ -16,23 +16,23 @@ Typewritter is still in its infancy and as such should not yet be used for anyth
 - Auto-saving of drafts
 - Option for allowing HTML in posts
 - Delete posts
-
-**Development**
 - Categories
 - Tags
+
+**Development**
 - Automated install
+- Live word count indicator
+- Multiple authors (login system)
 
 **Planning**
-- Multiple authors (login system)
 - Schedule post publication
+- Image uploader
+- File (uploads) manager
 
 **Not yet started**
 - HTML to Markdown converter
-- Live word count indicator
 - Create comments
 - Edit comments
-- Image uploader
-- File (uploads) manager
 - Simple, sandbox frontend
 - Search posts
 - Localization
