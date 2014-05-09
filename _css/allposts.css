@@ -35,13 +35,13 @@
 }
 
 .allposts-date, .allposts-published {
-        line-height: 1.2em;
-        font-size: 14px;
+	line-height: 1.2em;
+	font-size: 14px;
 }
 
 .allposts-published {
-        color: #888888;
-        font-style: italic;
+	color: #888888;
+	font-style: italic;
 }
 
 .allposts-edit {

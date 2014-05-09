@@ -48,9 +48,22 @@
 		$category = new Category();
 		echo $category->createCategory($name, $parent);
 	}
+	
+	
+	// Call to save changes to a category
+	
+	if ($_POST["action"] == "save-category") {
+		$id = $_POST["id"];
+		$name = $_POST["name"];
+		$parent = $_POST["parent"];
+            
+		$category = new Category();
+		$category->setId($id);
+		echo $category->saveCategory($name, $parent);
+	}
         
 
-	// Call to update categories
+	// Call to update all categories
 	
 	if ($_POST["action"] == "update-categories") {
 		$categories = $_POST["categories"];
@@ -63,7 +76,7 @@
 			if (in_array($cat[id], $categories)) {
 				$checked = ' checked="checked"';
 			}
-			
+		
 			$results .= "<div class='category-checkbox'>";
 			$results .= "<input type='checkbox' name='category' value='".$cat[id]."'".$checked.">".$cat[name];
 			$results .= "</div>";

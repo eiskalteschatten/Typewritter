@@ -43,8 +43,8 @@
 						<option selected value="0">Select a parent category</option>
 						<?php
 							foreach ($allCategories as $cat) {
-								echo "<option value='".$cat[id]."'>";
-								echo $cat[name];
+								echo "<option value='".$cat['id']."'>";
+								echo $cat['name'];
 								echo "</option>";
 							}
 						?>
@@ -53,23 +53,44 @@
 				</div>
 				<input type="text" id="newCategory" placeholder="New category">
 			</div>
-			<table class="allposts">
+			<table class="allcategories">
 				<?php
 					if (sizeof($allCategories) <= 0) {
 						echo "<tr><td>There are currently no categories! Please create a new one above.</td></tr>";
 					}
 					else {
 						foreach ($allCategories as $cat) {
-							echo "<tr>";
+							echo "<tr id='categoryRow".$cat['id']."' onclick=\"openEditCategory('".$cat['id']."')\">";
 						
-							echo "<td class='hidden' id='catId'>".$cat['id'] . "</td>";
-							echo "<td class='allposts-title'>".$cat['name'] . "</td>";
-							echo "<td class='allposts-date'>";
-                                                        echo $cat['date_updated']."<br>";
-                                                        echo "</td>";
-							echo "<td class='allposts-edit'><a href=\"post.php?id=".$post['id'] . "\">Edit</a></td>";
-
+							echo "<td class='hidden' id='catId'>".$cat['id']."</td>";
+							echo "<td class='allcategories-title'>".$cat['name']."</td>";
+							echo "<td class='allcategories-date'>";
+							echo $cat['date_updated']."<br>";
+							echo "</td>";
+							echo "<td class='allcategories-edit'><a href=\"#!\" onclick=\"openEditCategory('".$cat['id']."')\">Edit</a></td>";
 							echo "</tr>";
+							
+							echo "<tr class='edit-area' id='edit-area".$cat['id']."'><td colspan='3'><div class='toggle-div'>";
+							echo "Category name:&nbsp;<input type='text' value='".$cat['name']."' name='categoryName'>";
+							
+							echo "Parent category:&nbsp;<select id='newCategoryParent".$cat['id']."'>";
+							foreach ($allCategories as $allCat) {
+								$selected = "";
+								if ($allCat["id"] == $cat["parent"]) {
+									$selected = " selected";
+								}
+								
+								echo "<option value='".$allCat['id']."'".$selected.">";
+								echo $allCat['name'];
+								echo "</option>";
+							}
+							echo "</select>";
+							echo "<div class='right'>";
+							echo "<button onclick=\"saveCategory('".$cat['id']."')\" class='save-button'>Save changes</button>";
+							echo "<a href='#!' onclick=\"closeEditCategory('".$cat['id']."')\">Cancel</a>";
+							echo "</div>";
+							
+							echo "</div></td></tr>";
 						}
 					}
 				?>

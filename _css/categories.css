@@ -8,3 +8,78 @@
 .new-parent-category select {
     min-width: 300px;
 }
+
+.allcategories {
+	width: 100%;
+	border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.allcategories td {
+	padding: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.allcategories tr:hover, .allcategories tr.edit-opened {
+	background: #f0f0f0;
+}
+
+.allcategories tr.edit-area {
+	display: none;
+	background: #e0e0e0;
+}
+
+.allcategories tr.edit-area .toggle-div {
+	display: none;
+	opacity: 0;
+}
+
+.allcategories tr.edit-area .toggle-div, .allcategories tr.edit-area .toggle-div a {
+	font-size: 15px;
+}
+
+.allcategories tr.edit-area input[type="text"] {
+	border: 1px solid #B7B7B7;
+    font-size: 13px;
+    padding: 5px;
+    width: 500px;
+    margin-right: 100px;
+}
+
+.allcategories tr.edit-area select {
+	min-width: 200px;
+}
+
+.allcategories tr.edit-area .save-button {
+	margin-right: 10px;
+}
+
+.allcategories-title {
+	min-width: 150px;
+	max-width: 500px;
+}
+
+.allcategories-markdown {
+	color: #999999;
+	min-width: 300px;
+	max-width: 500px;
+	font-size: 15px;
+}
+
+.allcategories-date {
+	width: 165px;
+	text-align: right;
+	line-height: 1.2em;
+	font-size: 14px;
+}
+
+.allcategories-edit {
+	width: 35px;
+	text-align: right;
+}
+
+.allcategories-edit, .allcategories-edit a {
+	font-size: 15px;
+}

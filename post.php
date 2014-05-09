@@ -154,8 +154,8 @@
 								<option selected value="0">Select a parent category</option>
 								<?php
 									foreach ($allCategories as $cat) {
-										echo "<option value='".$cat[id]."'>";
-										echo $cat[name];
+										echo "<option value='".$cat['id']."'>";
+										echo $cat['name'];
 										echo "</option>";
 									}
 								?>

@@ -237,6 +237,24 @@
 			}
 		}
 		
+		function updateCategory($id, $name, $parent) {
+			try {
+				// Get the current date and time
+				$date = $this->getTimeDate();
+				
+				// Update the categories table using prepared statements to avoid MySQL injections.
+				$stmt = $this->connection->prepare("UPDATE ".$this->categoriesTable." SET name = ?, parent = ?, date_created = ?, date_updated = ? where id = ?");
+ 				$stmt->bind_param('sissi', $name, $parent, $date, $date, $id);
+ 				$result = $stmt->execute();
+			    $stmt->close();
+
+				return $result;
+			}
+			catch(Exception $e) {
+				die($e);
+			}
+		}
+		
 		function countFromTable($table) {
 			try {
 				// Get the number of rows in a table
