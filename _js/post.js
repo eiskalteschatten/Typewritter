@@ -8,7 +8,19 @@ function savePost(button, publish) {
 		var title = $('#postTitle').val();
 		var markdown = $('.markdown-editor').val();
 		var html = $('.html-editor').val();
-
+		var tags = $('.tags-input').val();
+		var categories = new Array();
+		
+		$('input[name="category"]:checked').each(function() {
+			categories.push($(this).val());
+		});
+		
+		if (categories.length == 0) {
+			categories.push('1');
+		}
+		
+		var categoriesStr = categories.join();
+		
 		if (publish) {
 			published = 1;		
 
@@ -24,7 +36,7 @@ function savePost(button, publish) {
 
 		$.ajax({
 			url: '_app/ajax.php',
-			data: {action: 'save', id: id, published: published, title: title, markdown: markdown, html: html},
+			data: {action: 'save', id: id, published: published, title: title, markdown: markdown, html: html, categories: categoriesStr, tags: tags},
 			type: 'post',
 			success: function(msg) {
 				var values = JSON.parse(msg);
@@ -54,18 +66,18 @@ function deletePost() {
     
     $('#deletePost').stop().animate({opacity: 0}, 200, function() {
         $.ajax({
-                url: '_app/ajax.php',
-                data: {action: 'delete-post', id: id},
-                type: 'post',
-                success: function(msg) {
-                    $('#deletePost').stop().animate({opacity: 1}, 200, function() {
-                        window.location.href = "index.php";
-                    });
-                },
-                error: function(msg) {
-                    alert("An error has occurred!\n\n"+msg);	
-                    $('#deletePost').stop().animate({opacity: 1}, 200);	
-                }
+			url: '_app/ajax.php',
+			data: {action: 'delete-post', id: id},
+			type: 'post',
+			success: function(msg) {
+				$('#deletePost').stop().animate({opacity: 1}, 200, function() {
+					window.location.href = "index.php";
+				});
+			},
+			error: function(msg) {
+				alert("An error has occurred!\n\n"+msg);	
+				$('#deletePost').stop().animate({opacity: 1}, 200);	
+			}
         });
     });
 }
@@ -190,9 +202,15 @@ function createCategory() {
 }
 
 function updateCategories() {
+	var categories = new Array();
+	
+	$('input[name="category"]:checked').each(function() {
+		categories.push($(this).val());
+	});
+
     $.ajax({
         url: '_app/ajax.php',
-        data: {action: 'update-categories'},
+        data: {action: 'update-categories', categories: categories},
         type: 'post',
         success: function(msg) {
             if (msg) {

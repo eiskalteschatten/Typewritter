@@ -8,6 +8,8 @@
 	$published = 0;
 	$dateVisible = "";
 	$date = "";
+	$categories = "";
+	$tags = "";
 	
 	// If the parameter "id" exists, then edit that post rather than create a new post
 	if ($_GET["id"]) {
@@ -20,7 +22,10 @@
 		$title = $currPost['title'];
 		$markdown = $currPost['markdown'];
 		$html = $currPost['html'];
-	
+		$tags = $currPost['tags'];
+		$categoriesStr = $currPost['categories'];
+		$categories = explode( ",", $categoriesStr);
+		
 		if (!allowHtml) {
 			$html = htmlentities($html);
 		}
@@ -131,8 +136,13 @@
 								$allCategories = $category->getAllCategories();
 
 								foreach ($allCategories as $cat) {
+									$checked = "";
+									if (in_array($cat[id], $categories)) {
+										$checked = ' checked="checked"';
+									}
+								
 									echo "<div class='category-checkbox'>";
-									echo "<input type='checkbox' name='category' value='".$cat[id]."'>".$cat[name];
+									echo "<input type='checkbox' name='category' value='".$cat[id]."'".$checked.">".$cat[name];
 									echo "</div>";
 								}
 							?>
@@ -155,7 +165,7 @@
 					</div>
 					<div class="tags">
 						<p><b>Tags</b></p>
-						<textarea class="tags-input" placeholder="Type your comma-separated tags here"></textarea>
+						<textarea class="tags-input" placeholder="Type your comma-separated tags here"><?=$tags?></textarea>
 					</div>
 				</div>
 				<div class="markdown-guide">

@@ -9,6 +9,8 @@
 		private $database = null;
 		private $id;
 		private $author;
+		private $categories;
+		private $tags;
 
 		function __construct($id) {
 			try { 
@@ -21,7 +23,7 @@
 			}
 		}
 	
-		function save($title, $markdown, $html, $published) {
+		function save($title, $markdown, $html, $published, $categories, $tags) {
 			//$author = $this->getAuthor();
 			//$author->getId();
 		
@@ -32,11 +34,11 @@
 			
 			if ($this->getId() != "") {
 				// Update the post if an ID already exists
-				$this->database->updatePost($title, $markdown, $html, 1, $published, $this->getId());
+				$this->database->updatePost($title, $markdown, $html, 1, $published, $this->getId(), $categories, $tags);
 			}
 			else {
 				// If an ID does not exist, insert the post into the database. The function returns the new ID.
-				$id = $this->database->insertIntoPost($title, $markdown, $html, 1, $published);
+				$id = $this->database->insertIntoPost($title, $markdown, $html, 1, $published, $categories, $tags);
 				
 				// Set the new post ID.
 				$this->setId($id);

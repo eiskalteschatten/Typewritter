@@ -180,14 +180,14 @@
 			}
 		}
 
-		function insertIntoPost($title, $markdown, $html, $author, $published) {
+		function insertIntoPost($title, $markdown, $html, $author, $published, $categories, $tags) {
 			try {
 				// Get the current date and time
 				$date = $this->getTimeDate();
                             
 				// Insert into the posts table using prepared statements to avoid MySQL injections.
-				$stmt = $this->connection->prepare("INSERT INTO ".$this->postsTable." (title, markdown, html, author, published, date_created, date_updated) VALUES (?, ?, ?, ?, ?, ?, ?)");
- 				$stmt->bind_param('sssiiss', $title, $markdown, $html, $author, $published, $date, $date);
+				$stmt = $this->connection->prepare("INSERT INTO ".$this->postsTable." (title, markdown, html, author, published, date_created, date_updated, categories, tags) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+ 				$stmt->bind_param('sssiissss', $title, $markdown, $html, $author, $published, $date, $date, $categories, $tags);
  				$stmt->execute();
 			    $stmt->close();
 
@@ -198,14 +198,14 @@
 			}
 		}
 
-		function updatePost($title, $markdown, $html, $author, $published, $id) {
+		function updatePost($title, $markdown, $html, $author, $published, $id, $categories, $tags) {
 			try {
 				// Get the current date and time
 				$date = $this->getTimeDate();
-                            
+                
 				// Update the posts table using prepared statements to avoid MySQL injections.
-				$stmt = $this->connection->prepare("UPDATE ".$this->postsTable." SET title = ?, markdown = ?, html = ?, author = ?, published = ?, date_updated = ? where id = ?");
- 				$stmt->bind_param('sssiisi', $title, $markdown, $html, $author, $published, $date, $id);
+				$stmt = $this->connection->prepare("UPDATE ".$this->postsTable." SET title = ?, markdown = ?, html = ?, author = ?, published = ?, date_updated = ?, categories = ?, tags = ? where id = ?");
+ 				$stmt->bind_param('sssiisssi', $title, $markdown, $html, $author, $published, $date, $categories, $tags, $id);
  				$stmt->execute();
 			    $stmt->close();
 			}

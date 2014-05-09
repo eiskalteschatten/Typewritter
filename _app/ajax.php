@@ -18,18 +18,19 @@
 		$markdown = $_POST["markdown"];
 		$html = $_POST["html"];
 		$published = $_POST["published"];
+		$categories = $_POST["categories"];
+		$tags = $_POST["tags"];
 	
 		$post = new Post($id);
-		$post->save($title, $markdown, $html, $published);	
+		$test = $post->save($title, $markdown, $html, $published, $categories, $tags);	
 		$newId = $post->getId();
 		
 		$return = array('id' => $newId, 'date' => $post->getDateUpdated());
-		
 		echo json_encode($return);
 	}
         
         
-        // Call to delete a post
+    // Call to delete a post
         
 	if ($_POST["action"] == "delete-post") {
 		$id = $_POST["id"];
@@ -52,13 +53,19 @@
 	// Call to update categories
 	
 	if ($_POST["action"] == "update-categories") {
+		$categories = $_POST["categories"];
 		$results = "";
 		$category = new Category();
 		$allCategories = $category->getAllCategories();
 		
 		foreach ($allCategories as $cat) {
+			$checked = "";
+			if (in_array($cat[id], $categories)) {
+				$checked = ' checked="checked"';
+			}
+			
 			$results .= "<div class='category-checkbox'>";
-			$results .= "<input type='checkbox' name='category' value='".$cat[id]."'>".$cat[name];
+			$results .= "<input type='checkbox' name='category' value='".$cat[id]."'".$checked.">".$cat[name];
 			$results .= "</div>";
 		}
 		
