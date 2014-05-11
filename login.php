@@ -43,7 +43,7 @@
 	</head>
 	<body>
 		<div class="menubar">
-			<div class="logo"><a href="index.php"><img src="_images/logo-writter.png"></a></div>
+			<div class="logo"><img src="_images/logo-writter.png"></div>
 		</div>
 		<div class="login-box">
 			<div class="message"></div>
