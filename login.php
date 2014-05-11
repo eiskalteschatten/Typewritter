@@ -4,19 +4,29 @@
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	    <meta name="robots" content="noindex,nofollow">
 
-		<title>Install Typewritter</title>
+		<title>Log into Typewritter</title>
 
 		<link rel="stylesheet" href="_css/typewritter.css" type="text/css">
 		<style>
-			.loading-box {
-				width: 300px;
-				height: 100px;
+			.login-box {
+				width: 440px;
+				height: 200px;
 				position: absolute;
 				left: 50%;				
 				top: 50%;
-				margin-left: -150px;
-				margin-top: -50px;
+				margin-left: -275px;
+				margin-top: -125px;
 				text-align: center;
+				box-shadow: 0 0 30px #d0d0d0;
+				padding: 30px;
+			}
+			
+			.login-box input {
+				border: 1px solid #B7B7B7;
+				font-size: 13px;
+				padding: 5px;
+				width: 200px;
+				margin-bottom: 20px;
 			}
 			
 			.message {
@@ -30,20 +40,18 @@
 
 		<script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="_js/typewritter.js"></script>
-		<script type="text/javascript" src="_js/install.js"></script>
 	</head>
 	<body>
 		<div class="menubar">
 			<div class="logo"><a href="index.php"><img src="_images/logo-writter.png"></a></div>
 		</div>
-		<div class="loading-box">
-			<div class="loader">
-				Installing Typewritter<br><br>
-				<img src="_images/ajax-loader.gif">
-			</div>
+		<div class="login-box">
 			<div class="message"></div>
-			<br>
-			<a href="index.php">Get started!</a>
+			Username:<br>
+			<input type="text" name="username"><br>
+			Password:<br>
+			<input type="password" name="password"><br>
+			<button>Login</button>
 		</div>
 	</body>
 </html>
